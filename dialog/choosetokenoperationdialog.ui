@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChooseTokenOperationDialog</class>
+ <widget class="QDialog" name="ChooseTokenOperationDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>580</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>960</width>
+     <height>580</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+    </font>
+   </property>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>120</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>您是管理员账户，可以进行如下操作</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="issueBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>200</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string>分配资产</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="dividendBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>280</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string>分红</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="cancelBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>400</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string>取消</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="issueToAssetBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>240</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string>空投</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="haltBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>320</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string> 暂停市场</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="editAdminBtn">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>360</y>
+      <width>140</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:#ffffff;color:rgb(0,138,254);border:1px solid rgb(0,138,254);border-radius:0px;}
+QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0px;}</string>
+    </property>
+    <property name="text">
+     <string>编辑管理员</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
