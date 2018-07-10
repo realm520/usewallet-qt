@@ -24,6 +24,8 @@ private slots:
 
     void on_cancelBtn_clicked();
 
+    void on_symbolLineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::CreateAssetDialog *ui;
 };

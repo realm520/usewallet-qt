@@ -70,7 +70,7 @@ QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0p
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>280</y>
+      <y>320</y>
       <width>140</width>
       <height>41</height>
      </rect>
@@ -87,7 +87,7 @@ QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0p
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>400</y>
+      <y>240</y>
       <width>140</width>
       <height>41</height>
      </rect>
@@ -104,7 +104,7 @@ QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0p
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>240</y>
+      <y>280</y>
       <width>140</width>
       <height>41</height>
      </rect>
@@ -121,7 +121,7 @@ QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0p
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>320</y>
+      <y>360</y>
       <width>140</width>
       <height>41</height>
      </rect>
@@ -138,7 +138,7 @@ QPushButton:hover{background-color:rgb(0,138,254);color:#ffffff;border-radius:0p
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>360</y>
+      <y>400</y>
       <width>140</width>
       <height>41</height>
      </rect>

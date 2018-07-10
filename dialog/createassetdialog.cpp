@@ -32,7 +32,7 @@ CreateAssetDialog::CreateAssetDialog(QWidget *parent) :
 
     ui->symbolLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->symbolLineEdit->setTextMargins(8,0,0,0);
-    QRegExp regx("^[A-Z]{0,12}$");
+    QRegExp regx("^[A-Z]{3,12}$");
     QValidator *validator = new QRegExpValidator(regx, this);
     ui->symbolLineEdit->setValidator( validator );
     ui->symbolLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
@@ -77,7 +77,9 @@ void CreateAssetDialog::pop()
 
 void CreateAssetDialog::on_okBtn_clicked()
 {
-    if( ui->symbolLineEdit->text().simplified().isEmpty())     return;
+    if( ui->symbolLineEdit->text().simplified().isEmpty() || ui->symbolLineEdit->text().size()<3) {
+        return;
+    }
     if( ui->assetNameLineEdit->text().simplified().isEmpty())     return;
     if( ui->descriptionLineEdit->text().simplified().isEmpty())     return;
     if( ui->maxSupplyLineEdit->text().simplified().isEmpty())     return;
@@ -163,4 +165,14 @@ void CreateAssetDialog::jsonDataUpdated(QString id)
 
         return;
     }
+}
+
+void CreateAssetDialog::on_symbolLineEdit_textChanged(const QString &arg1)
+{
+    if (ui->symbolLineEdit->text().size()<3) {
+        ui->symbolLineEdit->setStyleSheet("color:black;border:1px solid red;border-radius:3px;");
+    } else {
+        ui->symbolLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
+    }
+
 }

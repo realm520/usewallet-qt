@@ -222,7 +222,7 @@ font: 12px &quot;微软雅黑&quot;;}</string>
    </column>
    <column>
     <property name="text">
-     <string>余额/MCC</string>
+     <string>余额/USE</string>
     </property>
     <property name="font">
      <font>

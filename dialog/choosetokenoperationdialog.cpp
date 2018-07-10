@@ -34,6 +34,10 @@ ChooseTokenOperationDialog::ChooseTokenOperationDialog(int assetId, QWidget *par
     {
         ui->haltBtn->setText(tr("Halt market"));
     }
+    ui->dividendBtn->hide();
+    ui->editAdminBtn->hide();
+    ui->haltBtn->hide();
+    ui->issueToAssetBtn->hide();
 }
 
 ChooseTokenOperationDialog::~ChooseTokenOperationDialog()
