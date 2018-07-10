@@ -267,7 +267,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>MCC</string>
+    <string>USE</string>
    </property>
   </widget>
   <widget class="QLabel" name="feeLabel">
@@ -332,7 +332,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>MCC</string>
+    <string>USE</string>
    </property>
   </widget>
   <widget class="QLabel" name="tipLabel3">

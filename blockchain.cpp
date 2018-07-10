@@ -74,7 +74,7 @@ Blockchain::Blockchain()
     pendingFile  = new QFile( walletConfigPath + "/pending.dat");
 
     consoleWidget = NULL;
-    currentAsset = "MCC";
+    currentAsset = "USE";
 
 //    delegateAccountList << "init0"  << "init1"  << "init2"  << "init3"  << "init4"  << "init5"  << "init6"  << "init7"  << "init8"  << "init9"
 //                        << "init10" << "init11" << "init12" << "init13" << "init14" << "init15" << "init16" << "init17" << "init18" << "init19"

@@ -341,7 +341,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       </rect>
      </property>
      <property name="text">
-      <string>10 MCC</string>
+      <string>10 USE</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
