@@ -164,9 +164,7 @@ void MainPage::addAccount()
                 exportDialog.pop();
 			}
         }
-//        refresh();
         emit newAccount(name);
-
     }
 
 
