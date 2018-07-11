@@ -56,19 +56,19 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
 
 //    if( name.isEmpty())
 //    {
-//        Fry::getInstance()->configFile->beginGroup("/accountInfo");
-//        accountName = Fry::getInstance()->configFile->value( Fry::getInstance()->configFile->childKeys().at(0)).toString();
-//        Fry::getInstance()->configFile->endGroup();
+//        Blockchain::getInstance()->configFile->beginGroup("/accountInfo");
+//        accountName = Blockchain::getInstance()->configFile->value( Blockchain::getInstance()->configFile->childKeys().at(0)).toString();
+//        Blockchain::getInstance()->configFile->endGroup();
 //    }
 
-//    Fry::getInstance()->configFile->beginGroup("/accountInfo");
-//    QStringList keys = Fry::getInstance()->configFile->childKeys();
+//    Blockchain::getInstance()->configFile->beginGroup("/accountInfo");
+//    QStringList keys = Blockchain::getInstance()->configFile->childKeys();
 
 //    for( int i = 0; i < keys.size(); i++)
 //    {
-//        ui->accountComboBox->addItem( Fry::getInstance()->configFile->value( keys.at(i)).toString());
+//        ui->accountComboBox->addItem( Blockchain::getInstance()->configFile->value( keys.at(i)).toString());
 //    }
-//    Fry::getInstance()->configFile->endGroup();
+//    Blockchain::getInstance()->configFile->endGroup();
 //    ui->accountComboBox->setCurrentText(name);
 
     if( accountName.isEmpty())  // 如果是点击账单跳转
@@ -268,7 +268,7 @@ void TransferPage::on_sendBtn_clicked()
 //        else
 //        {
 
-//            Fry::getInstance()->postRPC( toJsonFormat( "id_wallet_transfer_to_public_account_" + accountName, "wallet_transfer_to_public_account",
+//            Blockchain::getInstance()->postRPC( toJsonFormat( "id_wallet_transfer_to_public_account_" + accountName, "wallet_transfer_to_public_account",
 //                                                          QStringList() << ui->amountLineEdit->text() << ASSET_NAME << accountName
 //                                                          << ui->sendtoLineEdit->text() << remark ));
 
@@ -296,26 +296,69 @@ void TransferPage::paintEvent(QPaintEvent *)
 
 void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
 {
+    AssetBalanceMap assetBalanceMap = Blockchain::getInstance()->accountBalanceMap.value(accountName);
+    int assetId = Blockchain::getInstance()->getAssetId(ui->assetComboBox->currentText());
+    if( assetId < 0)    return;
+    AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(assetId);
+    AssetInfo info2 = Blockchain::getInstance()->assetInfoMap.value(0);
+    double balance = assetBalanceMap.value(assetId) / info.precision;        // 当前资产余额
+    double balance2 = assetBalanceMap.value(0) / info2.precision;  // 主资产余额
+
     double amount = ui->amountLineEdit->text().toDouble();
     double fee = ui->feeLineEdit->text().toDouble();
-    QString strBalanceTemp = Blockchain::getInstance()->balanceMapValue(accountName).remove(",");
-    strBalanceTemp = strBalanceTemp.remove(" " + QString(ASSET_NAME));
-    double dBalance = strBalanceTemp.remove(",").toDouble();
+//    QString strBalanceTemp = Blockchain::getInstance()->balanceMapValue(accountName).remove(",");
+//    strBalanceTemp = strBalanceTemp.remove(" " + QString(ASSET_NAME));
+//    double dBalance = strBalanceTemp.remove(",").toDouble();
+    qDebug() <<  assetId <<  balance << balance2 << amount << fee;
 
-        if( amount + fee > dBalance)
+    if(assetId == 0)
     {
-        ui->tipLabel3->show();
-        ui->tipLabel5->show();
+        // 如果转的就是主资产
+        if( amount + fee > balance2)
+        {
+            ui->tipLabel3->show();
+            ui->tipLabel5->show();
+            ui->tipLabel3->setText(tr("not enough %1s").arg(info.symbol));
 
-        ui->sendBtn->setEnabled(false);
+            ui->sendBtn->setEnabled(false);
+        }
+        else
+        {
+            ui->tipLabel3->hide();
+            ui->tipLabel5->hide();
+
+            ui->sendBtn->setEnabled(true);
+        }
     }
     else
     {
-        ui->tipLabel3->hide();
-        ui->tipLabel5->hide();
+        if( fee > balance2)
+        {
+            ui->tipLabel3->show();
+            ui->tipLabel5->show();
+            ui->tipLabel3->setText(tr("not enough %1s for fee").arg(SHOW_NAME));
 
-        ui->sendBtn->setEnabled(true);
+            ui->sendBtn->setEnabled(false);
+            return;
+        }
+
+        if( amount > balance)
+        {
+            ui->tipLabel3->show();
+            ui->tipLabel5->show();
+            ui->tipLabel3->setText(tr("not enough %1s").arg(info.symbol));
+
+            ui->sendBtn->setEnabled(false);
+        }
+        else
+        {
+            ui->tipLabel3->hide();
+            ui->tipLabel5->hide();
+
+            ui->sendBtn->setEnabled(true);
+        }
     }
+
 }
 
 void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
@@ -351,8 +394,8 @@ void TransferPage::on_sendtoLineEdit_textChanged(const QString &arg1)
 //    {
 //        str = "blockchain_get_account WRONG \n";
 //    }
-//    Fry::getInstance()->write(str);
-//    QString result = Fry::getInstance()->read();
+//    Blockchain::getInstance()->write(str);
+//    QString result = Blockchain::getInstance()->read();
 //    DLOG_QT_WALLET(": %s", result.toStdString().c_str());
 //    result = result.left(BLOCKCHAIN_GET_ACCOUNT_RES_LENGTH);
 //    DLOG_QT_WALLET(": %s", result.toStdString().c_str());
