@@ -17,39 +17,17 @@ ConsoleDialog::ConsoleDialog(QWidget *parent) :
     DLOG_QT_WALLET_FUNCTION_BEGIN;
     ui->setupUi(this);
 
-//    Fry::getInstance()->appendCurrentDialogVector(this);
-//    setParent(UBChain::getInstance()->mainFrame);
-
-//    setAttribute(Qt::WA_TranslucentBackground, true);
     setWindowFlags(Qt::FramelessWindowHint);
 
-//    ui->widget->setObjectName("widget");
-//    ui->widget->setStyleSheet("#widget {background-color:rgba(10, 10, 10,100);}");
-//    ui->containerWidget->setObjectName("containerwidget");
-//    ui->containerWidget->setStyleSheet("#containerwidget{background-color: rgb(246, 246, 246);border:1px groove rgb(180,180,180);}");
-//    ui->titleLabel->setPixmap(QPixmap(":/pic/cplpic/titleBg3.png"));
-
-//    ui->containerWidget->installEventFilter(this);
     ui->consoleLineEdit->installEventFilter(this);
 
     connect( Blockchain::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
 
     ui->closeBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/close4.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
-
-//    ui->consoleLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
-//    ui->consoleLineEdit->setTextMargins(8,0,0,0);
-//    ui->consoleBrowser->setStyleSheet("QTextBrowser{color:black;border:1px solid #CCCCCC;border-radius:3px;}");
-
     ui->consoleLineEdit->setFocus();
-
     ui->checkBox->setStyleSheet("QCheckBox::indicator{ image:url(:/pic/pic2/checkBox_unchecked.png); }"
                                     "QCheckBox::indicator:checked{ image:url(:/pic/cplpic/checkBox_checked.png); }");
 
-//    setStyleSheet("#ConsoleDialog{background-color: rgb(246, 246, 246);}");
-
-//    mouse_press = false;
-
-//    ui->checkBox->hide();  // rpc选项隐藏
     DLOG_QT_WALLET_FUNCTION_END;
 }
 
@@ -65,13 +43,6 @@ ConsoleDialog::~ConsoleDialog()
 
 void ConsoleDialog::pop()
 {
-//    QEventLoop loop;
-//    show();
-//    ui->consoleLineEdit->grabKeyboard();
-//    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-//    loop.exec();  //进入事件 循环处理，阻塞
-
-//    move(0,0);
     move( (QApplication::desktop()->width() - this->width())/2 , (QApplication::desktop()->height() - this->height())/2);
     exec();
 }
@@ -79,7 +50,6 @@ void ConsoleDialog::pop()
 void ConsoleDialog::paintEvent(QPaintEvent *)
 {    
     QPainter painter(this);
-//    painter.setPen(QColor(204,204,204));
     painter.setPen(QPen(QColor(40,28,64),Qt::SolidLine));
     painter.setBrush(QBrush(QColor(40,28,64),Qt::SolidPattern));
     painter.drawRect(0,0,628,50);
@@ -87,19 +57,6 @@ void ConsoleDialog::paintEvent(QPaintEvent *)
 
 bool ConsoleDialog::eventFilter(QObject *watched, QEvent *e)
 {
-//    if( watched == ui->containerWidget)
-//    {
-//        if( e->type() == QEvent::Paint)
-//        {
-//            QPainter painter(ui->containerWidget);
-//            painter.setPen(QPen(QColor(122,112,110),Qt::SolidLine));
-//            painter.setBrush(QBrush(QColor(122,112,110),Qt::SolidPattern));
-//            painter.drawRect(0,0,628,50);
-
-//            return true;
-//        }
-//    }
-
     if(watched == ui->consoleLineEdit)
     {
         if(e->type() == QEvent::KeyPress)
@@ -143,7 +100,6 @@ bool ConsoleDialog::eventFilter(QObject *watched, QEvent *e)
 void ConsoleDialog::on_closeBtn_clicked()
 {
     close();
-//    emit accepted();
 }
 
 
@@ -180,7 +136,12 @@ void ConsoleDialog::on_consoleLineEdit_returnPressed()
 {
     DLOG_QT_WALLET_FUNCTION_BEGIN;
 
-    if( !ui->consoleLineEdit->text().simplified().isEmpty())
+    QString command = ui->consoleLineEdit->text().simplified();
+    if (command.split(' ').at(0) == "stop")
+    {
+        return;
+    }
+    if( !command.isEmpty())
     {
         cmdVector.removeAll(ui->consoleLineEdit->text());
         cmdVector.append(ui->consoleLineEdit->text());
