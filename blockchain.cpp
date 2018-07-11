@@ -1449,8 +1449,11 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
                 QString amountStr = "-" + QString::number(info.fee / 100000,'f',5) + " " + ASSET_NAME;
                 result.amountVector.append(amountStr);
+                double transfer_amou=entry.amount.amount;
+                if(assetInfo.symbol==ASSET_NAME)
+                    transfer_amou-=info.fee;
 
-                amountStr = "-" + QString::number(entry.amount.amount / assetInfo.precision,'g',15) + " " + assetInfo.symbol;
+                amountStr = "-" + QString::number(transfer_amou / assetInfo.precision,'g',15) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
             else
