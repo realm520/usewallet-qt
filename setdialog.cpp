@@ -78,7 +78,7 @@ SetDialog::SetDialog(QWidget *parent) :
     ui->feeLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
     ui->feeLineEdit->setText( getBigNumberString(Blockchain::getInstance()->transactionFee,100000));
 
-    QRegExp rx("^([0])(?:\\.\\d{0,5})?$|(^\\t?$)");
+    QRegExp rx("^([0])(?:\\.\\d{0,3})?$|(^\\t?$)");
     QRegExpValidator *pReg = new QRegExpValidator(rx, this);
     ui->feeLineEdit->setValidator(pReg);
     ui->closeBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/close4.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
