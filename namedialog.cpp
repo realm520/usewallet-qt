@@ -28,7 +28,7 @@ NameDialog::NameDialog(QWidget *parent) :
 
     connect( Blockchain::getInstance(), SIGNAL(jsonDataUpdated(QString)), this, SLOT(jsonDataUpdated(QString)));
 
-    yesOrNO = true;
+    yesOrNO = false;
 
     ui->nameLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->nameLineEdit->setPlaceholderText( tr("Beginning with letter,letters or numbers"));
@@ -79,11 +79,6 @@ void NameDialog::on_cancelBtn_clicked()
 QString NameDialog::pop()
 {
     ui->nameLineEdit->grabKeyboard();
-
-//    QEventLoop loop;
-//    show();
-//    connect(this,SIGNAL(accepted()),&loop,SLOT(quit()));
-//    loop.exec();  //进入事件 循环处理，阻塞
 
     move(0,0);
     exec();

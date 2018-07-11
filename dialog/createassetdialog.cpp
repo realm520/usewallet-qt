@@ -49,7 +49,7 @@ CreateAssetDialog::CreateAssetDialog(QWidget *parent) :
 
     ui->maxSupplyLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->maxSupplyLineEdit->setTextMargins(8,0,0,0);
-    QRegExp regx3("[0-9\.]+$");
+    QRegExp regx3("[0-9\.]{1,15}$");
     QValidator *validator3 = new QRegExpValidator(regx3, this);
     ui->maxSupplyLineEdit->setValidator( validator3 );
     ui->maxSupplyLineEdit->setAttribute(Qt::WA_InputMethodEnabled, false);
@@ -59,9 +59,6 @@ CreateAssetDialog::CreateAssetDialog(QWidget *parent) :
 
     QStringList delegates = Blockchain::getInstance()->getMyDelegateAccounts();
     ui->accountComboBox->addItems( delegates);
-
-
-
 }
 
 CreateAssetDialog::~CreateAssetDialog()
@@ -87,7 +84,6 @@ void CreateAssetDialog::on_okBtn_clicked()
     Blockchain::getInstance()->postRPC( toJsonFormat( "id_wallet_uia_create", "wallet_uia_create", QStringList() << ui->accountComboBox->currentText()
                                                << ui->symbolLineEdit->text() << ui->assetNameLineEdit->text() << ui->descriptionLineEdit->text()
                                                << ui->maxSupplyLineEdit->text()));
-
 }
 
 void CreateAssetDialog::on_cancelBtn_clicked()
