@@ -602,9 +602,7 @@ void Blockchain::parseTransactions(QString result, QString _key)
                     QJsonArray resultArray = resultValue.toArray();
                     for( int i = 0; i < resultArray.size(); i++)
                     {
-
                         TransactionInfo transactionInfo;
-
                         QJsonObject object          = resultArray.at(i).toObject();
                         transactionInfo.isConfirmed = object.take("is_confirmed").toBool();
                         if ( !transactionInfo.isConfirmed)
@@ -629,7 +627,6 @@ void Blockchain::parseTransactions(QString result, QString _key)
                             entry.toAccount         = entryObject.take("to_account").toString();
                             QJsonValue v = entryObject.take("memo");
                             entry.memo              = v.toString();
-
                             QJsonObject amountObject = entryObject.take("amount").toObject();
                             entry.amount.assetId     = amountObject.take("asset_id").toInt();
                             QJsonValue amountValue   = amountObject.take("amount");

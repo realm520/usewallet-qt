@@ -57,6 +57,8 @@ private slots:
 
     void on_assetComboBox_currentIndexChanged(int index);
 
+    void on_assetComboBox_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::TransferPage *ui;
     QString accountName;

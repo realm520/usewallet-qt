@@ -1,4 +1,5 @@
-﻿#include <QDebug>
+﻿#include <sstream>
+#include <QDebug>
 #include <QPainter>
 #include <QTextCodec>
 #include <QDir>
@@ -46,30 +47,7 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
     {
         ui->addContactBtn->setStyleSheet("QToolButton{background-image:url(:/pic/pic2/contactBtn2_En.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"
                                          "QToolButton:hover{background-image:url(:/pic/pic2/contactBtn2_hover_En.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}");
-//        ui->tipLabel2->setPixmap(QPixmap("pic2/feeTip_En.png"));
-//        ui->tipLabel2->setGeometry(425,260,229,96);
     }
-//        delegateLabelString = "pic2/delegateLabel_En.png";
-//        registeredLabelString = "pic2/registeredLabel_En.png";
-//    }
-
-
-//    if( name.isEmpty())
-//    {
-//        Fry::getInstance()->configFile->beginGroup("/accountInfo");
-//        accountName = Fry::getInstance()->configFile->value( Fry::getInstance()->configFile->childKeys().at(0)).toString();
-//        Fry::getInstance()->configFile->endGroup();
-//    }
-
-//    Fry::getInstance()->configFile->beginGroup("/accountInfo");
-//    QStringList keys = Fry::getInstance()->configFile->childKeys();
-
-//    for( int i = 0; i < keys.size(); i++)
-//    {
-//        ui->accountComboBox->addItem( Fry::getInstance()->configFile->value( keys.at(i)).toString());
-//    }
-//    Fry::getInstance()->configFile->endGroup();
-//    ui->accountComboBox->setCurrentText(name);
 
     if( accountName.isEmpty())  // 如果是点击账单跳转
     {
@@ -119,10 +97,6 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
     ui->feeLineEdit->setReadOnly(true);
     updateTransactionFee();
 
-//    QRegExp rx("^([0]|[1-9][0-9]{0,5})(?:\\.\\d{1,4})?$|(^\\t?$)");
-//    QRegExpValidator *pReg = new QRegExpValidator(rx, this);
-//    ui->feeLineEdit->setValidator(pReg);
-
     ui->messageLineEdit->setStyleSheet("color:black;border:1px solid #CCCCCC;border-radius:3px;");
     ui->messageLineEdit->setTextMargins(8,0,0,0);
 
@@ -130,7 +104,6 @@ TransferPage::TransferPage(QString name,QWidget *parent) :
     ui->tipLabel4->hide();
     ui->tipLabel5->hide();
     ui->tipLabel6->hide();
-
     ui->tipLabel5->setPixmap(QPixmap(":/pic/pic2/wrong.png"));
 
     on_amountLineEdit_textChanged(ui->amountLineEdit->text());
@@ -175,10 +148,7 @@ void TransferPage::on_accountComboBox_currentIndexChanged(const QString &arg1)
 	DLOG_QT_WALLET_FUNCTION_BEGIN;
 
     if( !inited)  return;
-
-
     getBalance();
-
     accountName = arg1;
     Blockchain::getInstance()->currentAccount = accountName;
     QString showName = Blockchain::getInstance()->addressMapValue(accountName).ownerAddress;
@@ -197,7 +167,6 @@ void TransferPage::on_sendBtn_clicked()
     if(ui->amountLineEdit->text().size() == 0 || ui->sendtoLineEdit->text().size() == 0)
     {      
         CommonDialog tipDialog(CommonDialog::OkOnly);
-//        tipDialog.setText( QString::fromLocal8Bit("请输入转账金额和地址"));
         tipDialog.setText( tr("Please enter the amount and address."));
         tipDialog.pop();
         return;
@@ -206,7 +175,6 @@ void TransferPage::on_sendBtn_clicked()
     if( ui->amountLineEdit->text().toDouble()  <= 0)
     {    
         CommonDialog tipDialog(CommonDialog::OkOnly);
-//        tipDialog.setText( QString::fromLocal8Bit("金额不能为0"));
         tipDialog.setText( tr("The amount can not be 0"));
         tipDialog.pop();
         return;
@@ -220,9 +188,7 @@ void TransferPage::on_sendBtn_clicked()
         return;
     }
 
-
     QString remark = ui->messageLineEdit->text();
-//    remark.remove(' ');
     if( remark.size() == 0)    // 转地址如果没有备注 会自动添加 TO GOPDD...   所以添加空格
     {
         remark = " ";
@@ -239,45 +205,18 @@ void TransferPage::on_sendBtn_clicked()
     }
 
     TransferConfirmDialog transferConfirmDialog( ui->sendtoLineEdit->text(), ui->amountLineEdit->text(), ui->feeLineEdit->text(), remark, ui->assetComboBox->currentText());
-//    transferConfirmDialog.move( this->mapToGlobal(QPoint( -28, 35)));
-//    emit showShadowWidget();
     bool yOrN = transferConfirmDialog.pop();
-//    emit hideShadowWidget();
     if( yOrN)
     {
-
-//        QString str = "wallet_set_transaction_fee " + ui->feeLineEdit->text() + '\n';
-//        Hcash::getInstance()->write(str);
-//        QString result = Hcash::getInstance()->read();
-
-//        if( ui->sendtoLineEdit->text().mid(0,3) == ASSET_NAME)
         if( !ui->sendtoLineEdit->text().isEmpty())
         {
-
             int assetIndex = ui->assetComboBox->currentIndex();
             if( assetIndex < 0) assetIndex = 0;
             AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(assetIndex);
-
             Blockchain::getInstance()->postRPC( toJsonFormat( "id_wallet_transfer_to_address_" + accountName, "wallet_transfer_to_address",
                                                           QStringList() << ui->amountLineEdit->text() << info.symbol << accountName
                                                           << ui->sendtoLineEdit->text() << remark ));
-//qDebug() << toJsonFormat( "id_wallet_transfer_to_address_" + accountName, "wallet_transfer_to_address",
-//                          QStringList() << ui->amountLineEdit->text() << ASSET_NAME << accountName
-//                          << ui->sendtoLineEdit->text() << remark );
         }
-//        else
-//        {
-
-//            Fry::getInstance()->postRPC( toJsonFormat( "id_wallet_transfer_to_public_account_" + accountName, "wallet_transfer_to_public_account",
-//                                                          QStringList() << ui->amountLineEdit->text() << ASSET_NAME << accountName
-//                                                          << ui->sendtoLineEdit->text() << remark ));
-
-//            qDebug() << "id_wallet_transfer_to_public_account_" + accountName;
-
-//        }
-
-
-
     }
 
 	DLOG_QT_WALLET_FUNCTION_END;
@@ -302,18 +241,16 @@ void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
     strBalanceTemp = strBalanceTemp.remove(" " + QString(ASSET_NAME));
     double dBalance = strBalanceTemp.remove(",").toDouble();
 
-        if( amount + fee > dBalance)
+    if( amount + fee > dBalance)
     {
         ui->tipLabel3->show();
         ui->tipLabel5->show();
-
         ui->sendBtn->setEnabled(false);
     }
     else
     {
         ui->tipLabel3->hide();
         ui->tipLabel5->hide();
-
         ui->sendBtn->setEnabled(true);
     }
 }
@@ -466,7 +403,6 @@ void TransferPage::getBalance()
     ui->balanceLabel2->move( 710 - ui->balanceLabel->width(),33);
 
     ui->amountAssetLabel->setText(info.symbol);
-
 }
 
 void TransferPage::updateTransactionFee()
@@ -525,8 +461,6 @@ qDebug() << id << result;
             }
 
             emit showAccountPage(accountName);
-
-
         }
         else
         {
@@ -548,8 +482,6 @@ qDebug() << id << result;
                     tipDialog.setText( tr("Wrong address!"));
                     tipDialog.pop();
                 }
-
-
             }
             else if( errorMessage == "imessage size bigger than soft_max_lenth")
             {
@@ -592,26 +524,6 @@ qDebug() << id << result;
         }
         return;
     }
-
-//    if( id.mid(0,26) == "id_blockchain_get_account_")
-//    {
-        // 如果跟当前输入框中的内容不一样，则是过时的rpc返回，不用处理
-//        if( id.mid(26) != ui->sendtoLineEdit->text())  return;
-//        QString result = FBTC::getInstance()->jsonDataValue(id);
-
-//        if( result != "\"result\":null")
-//        {
-//            ui->tipLabel4->setText(tr("<body><font color=green>Valid add.</font></body>"));
-//            ui->tipLabel4->show();
-//        }
-//        else
-//        {
-//            ui->tipLabel4->setText(tr("Invalid add."));
-//            ui->tipLabel4->show();
-//        }
-
-//        return;
-//    }
 }
 
 void TransferPage::on_feeLineEdit_textChanged(const QString &arg1)
@@ -638,4 +550,26 @@ void TransferPage::on_assetComboBox_currentIndexChanged(int index)
     if( assetUpdating)  return;
     getBalance();
     Blockchain::getInstance()->currentAsset = ui->assetComboBox->currentText();
+}
+
+void TransferPage::on_assetComboBox_currentIndexChanged(const QString &arg1)
+{
+    auto &assets = Blockchain::getInstance()->assetInfoMap;
+    auto assetItr = assets.begin();
+    for (;assetItr != assets.end(); ++assetItr)
+    {
+        if (assetItr->symbol == arg1) break;
+    }
+    int pointLength = QString::number(int(assetItr->precision), 10).length()-1;
+    std::stringstream regSs;
+    qDebug() << "Asset: " << arg1 << ", precision: " << int(assetItr->precision) << ", " << QString::number(int(assetItr->precision), 10);
+    if (pointLength > 0) {
+        regSs << "^([0]|[1-9][0-9]{0,10})(?:\\.\\d{1," << pointLength << "})?$|(^\\t?$)";
+    } else {
+        regSs << "^([0]|[1-9][0-9]{0,10})?$|(^\\t?$)";
+    }
+    QRegExp rx1(regSs.str().c_str());
+    QRegExpValidator *pReg1 = new QRegExpValidator(rx1, this);
+    ui->amountLineEdit->setValidator(pReg1);
+
 }
