@@ -814,7 +814,7 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
     <message>
         <location filename="consoledialog.ui" line="153"/>
         <source>清空</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Clear</translation>
     </message>
     <message>
         <location filename="consoledialog.ui" line="188"/>
