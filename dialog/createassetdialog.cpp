@@ -130,7 +130,7 @@ void CreateAssetDialog::jsonDataUpdated(QString id)
 
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( tr("Fail to create: ") + errorMessage);
+            commonDialog.setText( tr("Fail to create: ") , errorMessage);
             commonDialog.pop();
         }
 
@@ -155,7 +155,7 @@ void CreateAssetDialog::jsonDataUpdated(QString id)
             QString errorMessage = result.mid(pos, result.indexOf("\"", pos) - pos);
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( tr("Fail to register: ") + errorMessage);
+            commonDialog.setText( tr("Fail to register: ") , errorMessage);
             commonDialog.pop();
         }
 

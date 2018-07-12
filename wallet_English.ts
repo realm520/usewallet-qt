@@ -272,17 +272,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="429"/>
+        <location filename="accountpage.cpp" line="324"/>
         <source>total </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="429"/>
+        <location filename="accountpage.cpp" line="324"/>
         <source> ,</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="467"/>
+        <location filename="accountpage.cpp" line="362"/>
         <source>more</source>
         <translation type="unfinished"></translation>
     </message>
@@ -291,7 +291,7 @@
         <translation type="obsolete">Withdraw</translation>
     </message>
     <message>
-        <location filename="accountpage.cpp" line="319"/>
+        <location filename="accountpage.cpp" line="214"/>
         <source>Copy to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
@@ -612,17 +612,17 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="unfinished">Multi-Signature</translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="138"/>
+        <location filename="assetpage.cpp" line="136"/>
         <source>manage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="184"/>
+        <location filename="assetpage.cpp" line="182"/>
         <source>You have no account!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="assetpage.cpp" line="193"/>
+        <location filename="assetpage.cpp" line="191"/>
         <source>Only delegate account can create assets!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -938,13 +938,14 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
     </message>
     <message>
         <location filename="dialog/createassetdialog.ui" line="344"/>
-        <source>10 MCC</source>
+        <source>10 USE</source>
+        <oldsource>10 MCC</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dialog/createassetdialog.ui" line="357"/>
-        <source>3-12位大写字母,资产的唯一标识，需花费10 MCC</source>
-        <oldsource>只能使用大写字母,资产的唯一标识，需花费10 MCC</oldsource>
+        <source>3-12位大写字母,资产的唯一标识，需花费10 USE</source>
+        <oldsource>3-12位大写字母,资产的唯一标识，需花费10 MCC</oldsource>
         <translation type="unfinished">3-12 capital letters.The unique symbol of the token.It takes you 10 MCC.</translation>
     </message>
     <message>
@@ -966,28 +967,28 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="unfinished">Format as &quot;100,000,000.00000&quot; represent total 100 million with 5 bit precision.</translation>
     </message>
     <message>
-        <location filename="dialog/createassetdialog.cpp" line="110"/>
+        <location filename="dialog/createassetdialog.cpp" line="108"/>
         <source>Succeed to create!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/createassetdialog.cpp" line="122"/>
+        <location filename="dialog/createassetdialog.cpp" line="120"/>
         <source>This account is unregistered.Will you register it?
 (You will pay the fee)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/createassetdialog.cpp" line="135"/>
+        <location filename="dialog/createassetdialog.cpp" line="133"/>
         <source>Fail to create: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/createassetdialog.cpp" line="151"/>
+        <location filename="dialog/createassetdialog.cpp" line="149"/>
         <source>Succeed to register.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/createassetdialog.cpp" line="160"/>
+        <location filename="dialog/createassetdialog.cpp" line="158"/>
         <source>Fail to register: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -1404,17 +1405,17 @@ Cover it or not?</source>
 <context>
     <name>Frame</name>
     <message>
-        <location filename="frame.cpp" line="1201"/>
+        <location filename="frame.cpp" line="1199"/>
         <source>Minimize</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1204"/>
+        <location filename="frame.cpp" line="1202"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="frame.cpp" line="1207"/>
+        <location filename="frame.cpp" line="1205"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1466,7 +1467,7 @@ Cover it or not?</source>
         <translation type="unfinished">Market</translation>
     </message>
     <message>
-        <location filename="functionbar.cpp" line="73"/>
+        <location filename="functionbar.cpp" line="62"/>
         <source>No account for transfering,
 add an account first</source>
         <translation type="unfinished"></translation>
@@ -1802,13 +1803,17 @@ add an account first</source>
         <translation type="unfinished">Total</translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="226"/>
-        <source>余额/MCC</source>
-        <oldsource>余额/FBTC</oldsource>
-        <translation type="unfinished">Balance/FBTC</translation>
+        <location filename="mainpage.ui" line="225"/>
+        <source>余额/USE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="354"/>
+        <source>余额/MCC</source>
+        <oldsource>余额/FBTC</oldsource>
+        <translation type="obsolete">Balance/FBTC</translation>
+    </message>
+    <message>
+        <location filename="mainpage.ui" line="353"/>
         <source>当前资产</source>
         <translation type="unfinished">Token</translation>
     </message>
@@ -1818,12 +1823,12 @@ add an account first</source>
     </message>
     <message>
         <location filename="mainpage.ui" line="47"/>
-        <location filename="mainpage.ui" line="200"/>
+        <location filename="mainpage.ui" line="199"/>
         <source>账户</source>
         <translation type="unfinished">Account</translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="126"/>
+        <location filename="mainpage.ui" line="125"/>
         <source>创建账户</source>
         <translation type="unfinished">Add an account</translation>
     </message>
@@ -1833,12 +1838,12 @@ add an account first</source>
         <translation type="obsolete">Bal./GOP</translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="270"/>
+        <location filename="mainpage.ui" line="269"/>
         <source>请稍等...</source>
         <translation type="unfinished">Waiting...</translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="296"/>
+        <location filename="mainpage.ui" line="295"/>
         <source>您当前还没有账户，请添加</source>
         <translation type="unfinished">Please add an account first.</translation>
     </message>
@@ -1851,7 +1856,7 @@ add an account first</source>
         <translation type="obsolete">Please add a Goopal account.</translation>
     </message>
     <message>
-        <location filename="mainpage.ui" line="213"/>
+        <location filename="mainpage.ui" line="212"/>
         <source>地址</source>
         <translation type="unfinished">Address</translation>
     </message>
@@ -1872,22 +1877,22 @@ add an account first</source>
         <translation type="obsolete">Delegate</translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="98"/>
+        <location filename="mainpage.cpp" line="89"/>
         <source>If the balance or transaction record is incorrect, rescan the blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="152"/>
+        <location filename="mainpage.cpp" line="144"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="168"/>
+        <location filename="mainpage.cpp" line="160"/>
         <source>Please backup the private key of this account!!!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainpage.cpp" line="215"/>
+        <location filename="mainpage.cpp" line="205"/>
         <source>Balance</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2235,19 +2240,19 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="118"/>
+        <location filename="namedialog.cpp" line="113"/>
         <source>More than 63 characters!</source>
         <oldsource>More than 36 characters!</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="129"/>
-        <location filename="namedialog.cpp" line="169"/>
+        <location filename="namedialog.cpp" line="124"/>
+        <location filename="namedialog.cpp" line="164"/>
         <source>This name has been used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="namedialog.cpp" line="163"/>
+        <location filename="namedialog.cpp" line="158"/>
         <source>You can use this name</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2371,93 +2376,809 @@ add an account first</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="dyl.cpp" line="1284"/>
+        <location filename="blockchain.cpp" line="1292"/>
         <source>market deal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1303"/>
+        <location filename="blockchain.cpp" line="1311"/>
         <source>GENESIS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1312"/>
+        <location filename="blockchain.cpp" line="1320"/>
         <source>unkown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1344"/>
+        <location filename="blockchain.cpp" line="1352"/>
         <source>update permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1353"/>
+        <location filename="blockchain.cpp" line="1361"/>
         <source>create asset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1361"/>
+        <location filename="blockchain.cpp" line="1369"/>
         <source>airdrop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1397"/>
+        <location filename="blockchain.cpp" line="1405"/>
         <source>transfer to asset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1451"/>
+        <location filename="blockchain.cpp" line="1459"/>
         <source>transfer to self</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1461"/>
+        <location filename="blockchain.cpp" line="1469"/>
         <source>transfer-out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1471"/>
+        <location filename="blockchain.cpp" line="1482"/>
         <source>transfer-in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1485"/>
+        <location filename="blockchain.cpp" line="1496"/>
         <source>register account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1492"/>
+        <location filename="blockchain.cpp" line="1503"/>
         <source>issue asset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1540"/>
+        <location filename="blockchain.cpp" line="1555"/>
         <source>market withdraw</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1553"/>
+        <location filename="blockchain.cpp" line="1568"/>
         <source>market bid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1566"/>
+        <location filename="blockchain.cpp" line="1581"/>
         <source>market ask</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1579"/>
+        <location filename="blockchain.cpp" line="1594"/>
         <source>edit admins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1588"/>
+        <location filename="blockchain.cpp" line="1603"/>
         <source>halt market</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dyl.cpp" line="1597"/>
+        <location filename="blockchain.cpp" line="1612"/>
         <source>recover market</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="23"/>
+        <source>wallet error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="24"/>
+        <source>invalid password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="25"/>
+        <source>wallet locked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="26"/>
+        <source>wallet already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="27"/>
+        <source>wallet does not exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="28"/>
+        <source>unknown local account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="29"/>
+        <source>unknown account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="30"/>
+        <source>wallet closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="31"/>
+        <source>negative bid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="32"/>
+        <location filename="ErrorTranslator.cpp" line="100"/>
+        <source>invalid price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="33"/>
+        <location filename="ErrorTranslator.cpp" line="107"/>
+        <source>insufficient funds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="34"/>
+        <location filename="ErrorTranslator.cpp" line="162"/>
+        <source>unknown market order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="35"/>
+        <source>fee greater than amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="36"/>
+        <source>unknown address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="37"/>
+        <source>brain key is too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="38"/>
+        <source>password too short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="39"/>
+        <source>invalid timestamp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="40"/>
+        <location filename="ErrorTranslator.cpp" line="119"/>
+        <source>invalid account name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="41"/>
+        <source>file already exists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="42"/>
+        <source>file not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="43"/>
+        <source>invalid timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="44"/>
+        <source>invalid operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="45"/>
+        <source>transaction not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="46"/>
+        <source>invalid transaction id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="47"/>
+        <location filename="ErrorTranslator.cpp" line="136"/>
+        <source>invalid asset symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="48"/>
+        <source>duplicate account name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="49"/>
+        <source>not contact account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="50"/>
+        <source>memo too long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="51"/>
+        <source>invalid pay rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="52"/>
+        <source>invalid wallet name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="53"/>
+        <source>unsupported version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="54"/>
+        <source>invalid fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="55"/>
+        <source>key belongs to other account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="56"/>
+        <source>double cover</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="57"/>
+        <source>stupid order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="58"/>
+        <source>invalid expiration time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="59"/>
+        <source>bad collateral amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="60"/>
+        <source>unknown slate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="61"/>
+        <source>duplicate key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="62"/>
+        <source>unauthorized child account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="63"/>
+        <source>invalid slate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="64"/>
+        <source>private key not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="65"/>
+        <source>invalid cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="66"/>
+        <source>account not registered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="67"/>
+        <source>invalid contact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="68"/>
+        <source>label already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="69"/>
+        <location filename="ErrorTranslator.cpp" line="127"/>
+        <source>account retracted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="70"/>
+        <source>asset issuer not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="71"/>
+        <source>the authority address to remove not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="72"/>
+        <source>the authority address not supplied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="73"/>
+        <source>Blockchain Exception</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="74"/>
+        <source>invalid pts address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="75"/>
+        <source>addition overflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="76"/>
+        <source>subtraction overflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="77"/>
+        <source>asset/price mismatch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="78"/>
+        <source>unsupported chain operation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="79"/>
+        <source>unknown transaction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="80"/>
+        <source>duplicate transaction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="81"/>
+        <source>zero amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="82"/>
+        <source>zero price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="83"/>
+        <source>asset divide by self</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="84"/>
+        <source>asset divide by zero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="85"/>
+        <source>new database version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="86"/>
+        <source>unlinkable block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="87"/>
+        <source>price out of range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="88"/>
+        <source>block numbers not sequential</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="89"/>
+        <source>invalid previous block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="90"/>
+        <source>invalid block time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="91"/>
+        <source>time is in the past</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="92"/>
+        <source>time is in the future</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="93"/>
+        <source>invalid block digest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="94"/>
+        <source>invalid delegate signee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="95"/>
+        <source>failed checkpoint verification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="96"/>
+        <source>wrong chain id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="97"/>
+        <source>unknown block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="98"/>
+        <source>block is older than our undo history allows us to process</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="99"/>
+        <source>unexpected supply change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="101"/>
+        <source>invalid apr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="102"/>
+        <source>invalid amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="103"/>
+        <source>Evaluation Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="104"/>
+        <source>negative deposit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="105"/>
+        <source>not a delegate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="106"/>
+        <source>unknown balance record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="108"/>
+        <source>missing signature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="109"/>
+        <source>invalid claim password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="110"/>
+        <source>invalid withdraw condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="111"/>
+        <source>negative withdraw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="112"/>
+        <source>not an active delegate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="113"/>
+        <source>expired transaction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="114"/>
+        <source>invalid transaction expiration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="115"/>
+        <source>transaction exceeded the maximum transaction size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="116"/>
+        <source>balance must bigger or equal to 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="117"/>
+        <source>asset in deposit_to_asset_operation must be used up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="118"/>
+        <source>message which carried by trx is too long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="120"/>
+        <source>unknown account id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="121"/>
+        <source>unknown account name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="122"/>
+        <source>missing parent account signature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="123"/>
+        <source>parent account retracted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="124"/>
+        <source>account expired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="125"/>
+        <source>account already registered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="126"/>
+        <source>account key already in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="128"/>
+        <source>unknown parent account name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="129"/>
+        <source>unknown delegate slate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="130"/>
+        <source>too many delegates in slate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="131"/>
+        <source>pay balance remaining</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="132"/>
+        <source>unknown_account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="133"/>
+        <source>invalid_pay_rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="134"/>
+        <source>not delegates signature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="135"/>
+        <source>invalid precision</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="137"/>
+        <source>unknown asset id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="138"/>
+        <source>asset symbol in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="139"/>
+        <source>invalid asset amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="140"/>
+        <source>negative issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="141"/>
+        <source>over issue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="142"/>
+        <source>unknown asset symbol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="143"/>
+        <source>asset id in use</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="144"/>
+        <source>not user issued</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="145"/>
+        <source>invalid asset name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="146"/>
+        <source>amount too large</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="147"/>
+        <source>outstanding shares exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="148"/>
+        <source>invalid fee rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="149"/>
+        <source>invalid authority</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="150"/>
+        <source>permission not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="151"/>
+        <source>invalid whitelist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="152"/>
+        <source>not on whitelist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="153"/>
+        <source>market halted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="154"/>
+        <source>account is not allow to create asset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="155"/>
+        <source>delegate_vote_limit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="156"/>
+        <source>insufficient fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="157"/>
+        <source>negative fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="158"/>
+        <source>missing deposit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="159"/>
+        <source>insufficient relay fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="160"/>
+        <source>fee greater than max</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="161"/>
+        <source>invalid market</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="163"/>
+        <source>shorting base shares</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="164"/>
+        <source>insufficient collateral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="165"/>
+        <source>insufficient depth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="166"/>
+        <source>insufficient feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="167"/>
+        <source>invalid feed price</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="168"/>
+        <source>price multiplication overflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="169"/>
+        <source>price multiplication underflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ErrorTranslator.cpp" line="170"/>
+        <source>price multiplication undefined product 0*inf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2690,24 +3411,24 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="selectwalletpathwidget.cpp" line="44"/>
+        <location filename="selectwalletpathwidget.cpp" line="42"/>
         <source>Select the path to store the blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="selectwalletpathwidget.cpp" line="143"/>
+        <location filename="selectwalletpathwidget.cpp" line="141"/>
         <source>New GOPWalletUpdate2.exe error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="selectwalletpathwidget.cpp" line="176"/>
-        <location filename="selectwalletpathwidget.cpp" line="258"/>
+        <location filename="selectwalletpathwidget.cpp" line="174"/>
+        <location filename="selectwalletpathwidget.cpp" line="256"/>
         <source>New version detected,
 update or not?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="selectwalletpathwidget.cpp" line="231"/>
+        <location filename="selectwalletpathwidget.cpp" line="229"/>
         <source>Get GOPWalletUpdate2.exe error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2751,6 +3472,11 @@ update or not?</source>
         <translation type="unfinished">Fee</translation>
     </message>
     <message>
+        <location filename="setdialog.ui" line="403"/>
+        <source>USE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="setdialog.ui" line="556"/>
         <source>旧密码：</source>
         <translation type="unfinished">Old:</translation>
@@ -2783,11 +3509,6 @@ update or not?</source>
         <location filename="setdialog.ui" line="335"/>
         <source>点击关闭按钮最小化</source>
         <translation type="unfinished">Close to tray</translation>
-    </message>
-    <message>
-        <location filename="setdialog.ui" line="403"/>
-        <source>MCC</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="422"/>
@@ -2945,17 +3666,17 @@ update or not?</source>
         <translation type="unfinished">Send</translation>
     </message>
     <message>
-        <location filename="singlecontactwidget.cpp" line="21"/>
+        <location filename="singlecontactwidget.cpp" line="23"/>
         <source>Delete this contact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="singlecontactwidget.cpp" line="46"/>
+        <location filename="singlecontactwidget.cpp" line="48"/>
         <source>Sure to delete this contact?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="singlecontactwidget.cpp" line="113"/>
+        <location filename="singlecontactwidget.cpp" line="115"/>
         <source>No account for transfering.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3020,7 +3741,7 @@ update or not?</source>
         <translation type="unfinished">Console</translation>
     </message>
     <message>
-        <location filename="titlebar.cpp" line="89"/>
+        <location filename="titlebar.cpp" line="84"/>
         <source>Sure to close the Wallet?</source>
         <oldsource>Sure to close Fry Wallet?</oldsource>
         <translation type="unfinished"></translation>
@@ -3049,57 +3770,52 @@ update or not?</source>
         <translation type="unfinished">Trx Id:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="149"/>
+        <location filename="dialog/transactioninfodialog.ui" line="146"/>
         <source>区块高度：</source>
         <translation type="unfinished">Block height:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="187"/>
+        <location filename="dialog/transactioninfodialog.ui" line="184"/>
         <source>是否是市场交易：</source>
         <translation type="unfinished">Is market:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="225"/>
+        <location filename="dialog/transactioninfodialog.ui" line="222"/>
         <source>手续费：</source>
         <translation type="unfinished">Fee:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="263"/>
+        <location filename="dialog/transactioninfodialog.ui" line="260"/>
         <source>交易生成时间：</source>
         <translation type="unfinished">Timestamp:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="301"/>
+        <location filename="dialog/transactioninfodialog.ui" line="298"/>
         <source>是否是市场撤单：</source>
         <translation type="unfinished">Is market withdraw:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="339"/>
+        <location filename="dialog/transactioninfodialog.ui" line="336"/>
         <source>交易失效时间：</source>
         <translation type="unfinished">Expiration timestamp:</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="377"/>
-        <source>ledger_entries：</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="dialog/transactioninfodialog.ui" line="400"/>
+        <location filename="dialog/transactioninfodialog.ui" line="375"/>
         <source>from</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="405"/>
+        <location filename="dialog/transactioninfodialog.ui" line="380"/>
         <source>to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="410"/>
+        <location filename="dialog/transactioninfodialog.ui" line="385"/>
         <source>金额</source>
         <translation type="unfinished">Amount</translation>
     </message>
     <message>
-        <location filename="dialog/transactioninfodialog.ui" line="415"/>
+        <location filename="dialog/transactioninfodialog.ui" line="390"/>
         <source>备注</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3226,12 +3942,6 @@ update or not?</source>
         <translation type="unfinished">Amount</translation>
     </message>
     <message>
-        <location filename="transferpage.ui" line="270"/>
-        <location filename="transferpage.ui" line="335"/>
-        <source>MCC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="transferpage.ui" line="308"/>
         <source>0.0001</source>
         <translation type="unfinished"></translation>
@@ -3250,6 +3960,12 @@ update or not?</source>
         <location filename="transferpage.ui" line="289"/>
         <source>手续费</source>
         <translation type="unfinished">Fee</translation>
+    </message>
+    <message>
+        <location filename="transferpage.ui" line="270"/>
+        <location filename="transferpage.ui" line="335"/>
+        <source>USE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="transferpage.ui" line="354"/>
@@ -3277,70 +3993,81 @@ update or not?</source>
         <translation type="unfinished">More than 40 bytes</translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="201"/>
+        <location filename="transferpage.cpp" line="170"/>
         <source>Please enter the amount and address.</source>
         <oldsource>Please enter the amount and Add.</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="210"/>
+        <location filename="transferpage.cpp" line="178"/>
         <source>The amount can not be 0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="218"/>
+        <location filename="transferpage.cpp" line="186"/>
         <source>The fee can not be 0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="236"/>
+        <location filename="transferpage.cpp" line="202"/>
         <source>Message length more than 40 bytes!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="512"/>
+        <location filename="transferpage.cpp" line="259"/>
+        <location filename="transferpage.cpp" line="287"/>
+        <source>not enough %1s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="transferpage.cpp" line="277"/>
+        <source>not enough %1s for fee</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="transferpage.cpp" line="492"/>
         <source>Transaction has been sent,please wait for confirmation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="518"/>
+        <location filename="transferpage.cpp" line="498"/>
         <source>Add this address to contacts?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="542"/>
+        <location filename="transferpage.cpp" line="520"/>
         <source>This name has been registered, please rename this account!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="548"/>
-        <location filename="transferpage.cpp" line="576"/>
-        <location filename="transferpage.cpp" line="582"/>
+        <location filename="transferpage.cpp" line="526"/>
+        <location filename="transferpage.cpp" line="552"/>
+        <location filename="transferpage.cpp" line="558"/>
         <source>Wrong address!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="557"/>
+        <location filename="transferpage.cpp" line="533"/>
         <source>Message too long!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="564"/>
+        <location filename="transferpage.cpp" line="540"/>
         <source>Failed: You need to wait for synchronization to complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="570"/>
+        <location filename="transferpage.cpp" line="546"/>
         <source>Not enough balance!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="588"/>
+        <location filename="transferpage.cpp" line="564"/>
         <source>Transaction sent failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="transferpage.cpp" line="341"/>
+        <location filename="transferpage.cpp" line="322"/>
         <source>Invalid add.</source>
         <oldsource>Invalid address</oldsource>
         <translation type="unfinished"></translation>
@@ -3506,12 +4233,12 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
         <translation type="obsolete">Connecting to network...</translation>
     </message>
     <message>
-        <location filename="waitingforsync.cpp" line="87"/>
+        <location filename="waitingforsync.cpp" line="82"/>
         <source>Sure to close the Wallet?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="waitingforsync.cpp" line="185"/>
+        <location filename="waitingforsync.cpp" line="180"/>
         <source>Rebuilding... </source>
         <translation type="unfinished"></translation>
     </message>

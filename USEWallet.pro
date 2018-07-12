@@ -78,7 +78,8 @@ SOURCES += main.cpp\
     control/qrcodewidget.cpp \
     dialog/transactioninfodialog.cpp \
     selectwalletpathwidget.cpp \
-    blockchain.cpp
+    blockchain.cpp \
+    ErrorTranslator.cpp
 
 HEADERS  += firstlogin.h \
     normallogin.h \
@@ -139,7 +140,8 @@ HEADERS  += firstlogin.h \
     control/qrcodewidget.h \
     dialog/transactioninfodialog.h \
     selectwalletpathwidget.h \
-    blockchain.h
+    blockchain.h \
+    ErrorTranslator.h
 
 FORMS    += firstlogin.ui \
     normallogin.ui \

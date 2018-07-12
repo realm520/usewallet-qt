@@ -439,7 +439,7 @@ void SetDialog::jsonDataUpdated(QString id)
             QString errorMessage = result.mid(pos, result.indexOf("\"", pos) - pos);
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( "Failed: " + errorMessage);
+            commonDialog.setText( "Failed: " , errorMessage);
             commonDialog.pop();
         }
 
@@ -466,7 +466,7 @@ void SetDialog::jsonDataUpdated(QString id)
             else
             {
                 CommonDialog commonDialog(CommonDialog::OkOnly);
-                commonDialog.setText( "Failed: " + errorMessage);
+                commonDialog.setText( "Failed: " , errorMessage);
                 commonDialog.pop();
             }
         }

@@ -17,7 +17,7 @@ public:
     ~CommonDialog();
 
     bool pop();
-    void setText(QString text);
+    void setText(QString text, QString info="");
 
 private slots:
     void on_okBtn_clicked();

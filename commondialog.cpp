@@ -3,7 +3,7 @@
 #include <QDebug>
 #include "debug_log.h"
 #include "blockchain.h"
-
+#include "ErrorTranslator.h"
 CommonDialog::CommonDialog(commonDialogType type, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CommonDialog)
@@ -76,7 +76,7 @@ bool CommonDialog::pop()
     return yesOrNO;
 }
 
-void CommonDialog::setText(QString text)
+void CommonDialog::setText(QString text, QString info)
 {
-    ui->textLabel->setText(text);
+    ui->textLabel->setText(text+ ErrorTranslator::Translate(info));
 }

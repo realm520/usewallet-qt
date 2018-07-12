@@ -308,7 +308,7 @@ void MarketPage::jsonDataUpdated(QString id)
             QString errorMessage = result.mid(pos, result.indexOf("\"", pos) - pos);
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( tr("Order failed: ") + errorMessage);
+            commonDialog.setText( tr("Order failed: ") , errorMessage);
             commonDialog.pop();
         }
 

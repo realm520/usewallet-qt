@@ -106,7 +106,7 @@ qDebug() << id << result;
 
 
             CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( tr("Fail: ") + errorMessage);
+            commonDialog.setText( tr("Fail: ") , errorMessage);
             commonDialog.pop();
         }
 
