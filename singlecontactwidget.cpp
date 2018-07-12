@@ -10,7 +10,9 @@ SingleContactWidget::SingleContactWidget(int num,QString address,QString remarkN
     ui(new Ui::SingleContactWidget)
 {
     ui->setupUi(this);
-
+	int chop_size = remarkName.length() - MAX_CONTRACT_REMARK_LENGTH;
+	if (chop_size > 0)
+		remarkName.chop(chop_size);
     setAutoFillBackground(true);
     QPalette palette;
     palette.setColor(QPalette::Background, QColor(255,255,255));

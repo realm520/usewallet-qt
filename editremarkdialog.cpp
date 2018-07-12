@@ -55,11 +55,15 @@ QString EditRemarkDialog::pop()
 
 void EditRemarkDialog::on_remarkLineEdit_textChanged(const QString &arg1)
 {
+
     QString remark = arg1;
-    if( remark.contains("=") || remark.contains(";"))
+    if( remark.contains("=") || remark.contains(";")|| remark.size()>MAX_CONTRACT_REMARK_LENGTH)
     {
         remark.remove("=");
         remark.remove(";");
+		int chop_size = remark.length() - MAX_CONTRACT_REMARK_LENGTH;
+		if (chop_size > 0)
+			remark.chop(chop_size);
         ui->remarkLineEdit->setText( remark);
     }
 }

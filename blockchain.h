@@ -50,7 +50,7 @@
 #define CLOSE_BUTTON_STYLE "QToolButton{background-image:url(:/pic/pic2/close2.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"\
                            "QToolButton:hover{background-image:url(:/pic/pic2/close_hover.png);background-repeat: repeat-xy;background-position: center;background-attachment: fixed;background-clip: padding;border-style: flat;}"
 #define CLICK_BUTTON_STYLE "color:white;border:1px solid rgb(109,91,255);border-radius:21px;background-color: rgb(109,91,255);"
-
+#define MAX_CONTRACT_REMARK_LENGTH 30
 
 class QTimer;
 class QFrame;
