@@ -367,8 +367,6 @@ void AccountPage::showTransactions()
         {
             ui->accountTransactionsTableWidget->item(i,j)->setTextAlignment(Qt::AlignCenter);
         }
-
-
     }
 }
 

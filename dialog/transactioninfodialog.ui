@@ -16,7 +16,7 @@
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>-10</x>
      <y>0</y>
      <width>960</width>
      <height>580</height>
@@ -95,7 +95,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>60</x>
        <y>50</y>
        <width>141</width>
        <height>30</height>
@@ -109,9 +109,6 @@ QToolButton:disabled{background-color:#cecece;}</string>
      </property>
      <property name="text">
       <string>交易ID：</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="trxIdLabel">
@@ -133,8 +130,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>80</y>
+       <x>500</x>
+       <y>110</y>
        <width>141</width>
        <height>30</height>
       </rect>
@@ -149,14 +146,14 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <string>区块高度：</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="blockHeightLabel">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>80</y>
+       <x>600</x>
+       <y>110</y>
        <width>100</width>
        <height>31</height>
       </rect>
@@ -171,8 +168,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>270</x>
-       <y>80</y>
+       <x>500</x>
+       <y>50</y>
        <width>120</width>
        <height>30</height>
       </rect>
@@ -187,14 +184,14 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <string>是否是市场交易：</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="isMarketLabel">
      <property name="geometry">
       <rect>
-       <x>400</x>
-       <y>80</y>
+       <x>600</x>
+       <y>50</y>
        <width>100</width>
        <height>31</height>
       </rect>
@@ -209,8 +206,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>470</x>
-       <y>50</y>
+       <x>230</x>
+       <y>80</y>
        <width>120</width>
        <height>30</height>
       </rect>
@@ -231,8 +228,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="feeLabel">
      <property name="geometry">
       <rect>
-       <x>620</x>
-       <y>50</y>
+       <x>360</x>
+       <y>80</y>
        <width>100</width>
        <height>31</height>
       </rect>
@@ -247,8 +244,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>110</y>
+       <x>60</x>
+       <y>80</y>
        <width>120</width>
        <height>30</height>
       </rect>
@@ -263,7 +260,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <string>交易生成时间：</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="trxTimeLabel">
@@ -301,13 +298,13 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <string>是否是市场撤单：</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="isMarketCancelLabel">
      <property name="geometry">
       <rect>
-       <x>630</x>
+       <x>600</x>
        <y>80</y>
        <width>100</width>
        <height>31</height>
@@ -323,7 +320,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_10">
      <property name="geometry">
       <rect>
-       <x>340</x>
+       <x>60</x>
        <y>110</y>
        <width>150</width>
        <height>30</height>
@@ -339,14 +336,14 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <string>交易失效时间：</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="trxExpirationLabel">
      <property name="geometry">
       <rect>
-       <x>500</x>
-       <y>110</y>
+       <x>160</x>
+       <y>80</y>
        <width>200</width>
        <height>31</height>
       </rect>
@@ -356,28 +353,6 @@ QToolButton:disabled{background-color:#cecece;}</string>
      </property>
      <property name="textInteractionFlags">
       <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_11">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>150</y>
-       <width>120</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>微软雅黑</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>ledger_entries：</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
     <widget class="QTableWidget" name="entriesTableWidget">
