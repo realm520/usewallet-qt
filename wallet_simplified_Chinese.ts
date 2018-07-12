@@ -3273,7 +3273,7 @@ update or not?</source>
     <message>
         <location filename="transferconfirmdialog.cpp" line="111"/>
         <source>Please enter the password!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">请输入密码！</translation>
     </message>
 </context>
 <context>
