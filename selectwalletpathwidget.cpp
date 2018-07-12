@@ -62,7 +62,7 @@ void SelectWalletPathWidget::on_okBtn_clicked()
     }
     else
     {
-        qDebug() << "laungh "ASSET_NAME".exe failed";
+        qDebug() << "laungh " ASSET_NAME ".exe failed";
     }
 }
 

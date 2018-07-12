@@ -16,10 +16,11 @@
 
 bool checkOnly()
 {
+
     DLOG_QT_WALLET_FUNCTION_BEGIN;
 
     //  创建互斥量
-    HANDLE m_hMutex  =  CreateMutex(NULL, FALSE,  L"WALLET"WASSET_NAME);
+    HANDLE m_hMutex  =  CreateMutex(NULL, FALSE,  L"WALLET" WASSET_NAME);
     //  检查错误代码
     if  (GetLastError()  ==  ERROR_ALREADY_EXISTS)  {
       //  如果已有互斥量存在则释放句柄并复位互斥量

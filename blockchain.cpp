@@ -315,7 +315,7 @@ void Blockchain::getSystemEnvironmentPath()
     {
         if (str.startsWith("APPDATA="))
         {
-            walletConfigPath = str.mid(8) + "\\"ASSET_NAME"Wallet";
+            walletConfigPath = str.mid(8) + "\\" ASSET_NAME "Wallet";
             appDataPath = walletConfigPath + "\\chaindata";
             qDebug() << "appDataPath:" << appDataPath;
             break;

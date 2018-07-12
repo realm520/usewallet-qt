@@ -171,11 +171,11 @@ Frame::Frame(): timer(NULL),
 
             if( Blockchain::getInstance()->proc->waitForStarted())
             {
-                qDebug() << "laungh "ASSET_NAME".exe succeeded";
+                qDebug() << "laungh " ASSET_NAME ".exe succeeded";
             }
             else
             {
-                qDebug() << "laungh "ASSET_NAME".exe failed";
+                qDebug() << "laungh " ASSET_NAME ".exe failed";
             }
 
 
