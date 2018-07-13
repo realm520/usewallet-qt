@@ -3792,12 +3792,12 @@ update or not?</source>
     <message>
         <location filename="dialog/transactioninfodialog.ui" line="298"/>
         <source>是否是市场撤单：</source>
-        <translation type="unfinished">Is market withdraw:</translation>
+        <translation type="unfinished">Market withdraw:</translation>
     </message>
     <message>
         <location filename="dialog/transactioninfodialog.ui" line="336"/>
         <source>交易失效时间：</source>
-        <translation type="unfinished">Expiration timestamp:</translation>
+        <translation type="unfinished">Expiration:</translation>
     </message>
     <message>
         <location filename="dialog/transactioninfodialog.ui" line="375"/>
@@ -3817,7 +3817,7 @@ update or not?</source>
     <message>
         <location filename="dialog/transactioninfodialog.ui" line="390"/>
         <source>备注</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Memo</translation>
     </message>
     <message>
         <location filename="dialog/transactioninfodialog.cpp" line="39"/>

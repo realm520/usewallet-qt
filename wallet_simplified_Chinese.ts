@@ -4132,7 +4132,7 @@ update or not?</source>
     <message>
         <location filename="transferpage.cpp" line="546"/>
         <source>Not enough balance!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">余额不足！</translation>
     </message>
     <message>
         <source>Not enough GOPs!</source>

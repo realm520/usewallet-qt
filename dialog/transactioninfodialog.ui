@@ -152,7 +152,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="blockHeightLabel">
      <property name="geometry">
       <rect>
-       <x>600</x>
+       <x>630</x>
        <y>110</y>
        <width>100</width>
        <height>31</height>
@@ -190,7 +190,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="isMarketLabel">
      <property name="geometry">
       <rect>
-       <x>600</x>
+       <x>630</x>
        <y>50</y>
        <width>100</width>
        <height>31</height>
@@ -304,7 +304,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="isMarketCancelLabel">
      <property name="geometry">
       <rect>
-       <x>600</x>
+       <x>630</x>
        <y>80</y>
        <width>100</width>
        <height>31</height>
