@@ -400,7 +400,7 @@ QToolButton:hover{background-color:rgb(10,148,254);}</string>
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>USE</string>
+        <string>UL</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="feeLineEdit">

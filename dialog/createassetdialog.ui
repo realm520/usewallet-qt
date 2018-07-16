@@ -341,7 +341,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       </rect>
      </property>
      <property name="text">
-      <string>10 USE</string>
+      <string>10 UL</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
@@ -354,7 +354,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       </rect>
      </property>
      <property name="text">
-      <string>3-12位大写字母,资产的唯一标识，需花费10 USE</string>
+      <string>3-12位大写字母,资产的唯一标识，需花费10 UL</string>
      </property>
      <property name="scaledContents">
       <bool>false</bool>

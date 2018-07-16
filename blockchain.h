@@ -31,10 +31,10 @@
 #include <QMutex>
 #include <QDialog>
 
-#define ASSET_NAME "USE"
-#define WASSET_NAME L"USE"
-#define SHOW_NAME   "USE"
-#define ADDRESS_PREFIX  "USE"
+#define ASSET_NAME "UL"
+#define WASSET_NAME L"UL"
+#define SHOW_NAME   "UL"
+#define ADDRESS_PREFIX  "UL"
 #define WALLET_VERSION "1.1.0"           // 版本号
 #define AUTO_REFRESH_TIME 1000           // 自动刷新时间(ms)
 #define SLOW_TIMER_TIME   60 * 1000
