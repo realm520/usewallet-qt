@@ -1530,16 +1530,16 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
         else if(myEntries.size() == 1)
         {
             Entry entry = myEntries.at(0);
-            if(entry.fromAccount == accountName)
-            {
-                QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
-                result.amountVector.append(amountStr);
-
-                if(_assetName != ASSET_NAME)
-                {
-                    result.isAssetRelated = false;
-                }
-            }
+			if (entry.fromAccount == accountName)
+			{
+				if (_assetName == ASSET_NAME)
+				{
+					QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+					result.amountVector.append(amountStr);
+				}
+			}
+			result.isAssetRelated = true;
+            
 
             AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
             if(entry.toAccount == accountName)
@@ -1547,6 +1547,9 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
                 QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
+			if(result.amountVector.size()==0)
+				result.isAssetRelated = false;
+
         }
 
         break;
