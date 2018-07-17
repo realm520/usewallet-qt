@@ -938,15 +938,15 @@ This name will be registered in the Goopal blockchain,permanently and immutably.
     </message>
     <message>
         <location filename="dialog/createassetdialog.ui" line="344"/>
-        <source>10 USE</source>
-        <oldsource>10 MCC</oldsource>
+        <source>10 UL</source>
+        <oldsource>10 USE</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dialog/createassetdialog.ui" line="357"/>
-        <source>3-12位大写字母,资产的唯一标识，需花费10 USE</source>
-        <oldsource>3-12位大写字母,资产的唯一标识，需花费10 MCC</oldsource>
-        <translation type="unfinished">3-12 capital letters.The unique symbol of the token.It takes you 10 MCC.</translation>
+        <source>3-12位大写字母,资产的唯一标识，需花费10 UL</source>
+        <oldsource>3-12位大写字母,资产的唯一标识，需花费10 USE</oldsource>
+        <translation type="unfinished">3-12 capital letters.The unique symbol of the token.It takes you 10 UL.</translation>
     </message>
     <message>
         <source>至少3位的大写字母，资产的唯一标识，
@@ -1804,7 +1804,8 @@ add an account first</source>
     </message>
     <message>
         <location filename="mainpage.ui" line="225"/>
-        <source>余额/USE</source>
+        <source>余额/UL</source>
+        <oldsource>余额/USE</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2436,32 +2437,32 @@ add an account first</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1555"/>
+        <location filename="blockchain.cpp" line="1558"/>
         <source>market withdraw</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1568"/>
+        <location filename="blockchain.cpp" line="1571"/>
         <source>market bid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1581"/>
+        <location filename="blockchain.cpp" line="1584"/>
         <source>market ask</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1594"/>
+        <location filename="blockchain.cpp" line="1597"/>
         <source>edit admins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1603"/>
+        <location filename="blockchain.cpp" line="1606"/>
         <source>halt market</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="blockchain.cpp" line="1612"/>
+        <location filename="blockchain.cpp" line="1615"/>
         <source>recover market</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3473,7 +3474,8 @@ update or not?</source>
     </message>
     <message>
         <location filename="setdialog.ui" line="403"/>
-        <source>USE</source>
+        <source>UL</source>
+        <oldsource>USE</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3964,7 +3966,8 @@ update or not?</source>
     <message>
         <location filename="transferpage.ui" line="270"/>
         <location filename="transferpage.ui" line="335"/>
-        <source>USE</source>
+        <source>UL</source>
+        <oldsource>USE</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

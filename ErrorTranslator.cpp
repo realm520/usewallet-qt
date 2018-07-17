@@ -19,6 +19,11 @@
 
 inline ErrorTranslator::ErrorTranslator()
 {
+	reset_translate_map();
+}
+
+void ErrorTranslator::reset_translate_map()
+{
 	translate_map.clear();
 	translate_map["wallet error"] = QObject::tr("wallet error");
 	translate_map["invalid password"] = QObject::tr("invalid password");

@@ -27,6 +27,7 @@
 #include "control/showbottombarwidget.h"
 #include "assetpage.h"
 #include "marketpage.h"
+#include "ErrorTranslator.h"
 
 Frame::Frame(): timer(NULL),
     firstLogin(NULL),
@@ -862,7 +863,7 @@ void Frame::setLanguage(QString language)
     }
 
     QApplication::installTranslator(&translator);
-
+	ErrorTranslator::getErrorTranslator().reset_translate_map();
 
     if( titleBar != NULL)       // 已经登录
     {

@@ -124,50 +124,14 @@ void MainPage::addAccount()
     NameDialog nameDialog;
     QString name = nameDialog.pop();
 
-    if( !name.isEmpty())
-    {
-        mutexForAddressMap.lock();
-        int size = Blockchain::getInstance()->addressMap.size();
-        mutexForAddressMap.unlock();
-
-        emit showShadowWidget();
-        Blockchain::getInstance()->write("wallet_account_create " + name + '\n');
-        QString result = Blockchain::getInstance()->read();
-        emit hideShadowWidget();
-
-        result.remove("\"");
-
-        if(result.left(5) == "20017")
-        {
-            qDebug() << "wallet_account_create " + name + '\n'  << result;
-            CommonDialog commonDialog(CommonDialog::OkOnly);
-            commonDialog.setText( tr("Failed"));
-            commonDialog.pop();
-            return;
-        }
-        else
-        {
-            if(result.startsWith(ASSET_NAME))   // 创建账号成功
-            {
-                mutexForConfigFile.lock();
-                Blockchain::getInstance()->configFile->setValue( QString("/accountInfo/") + QString::fromLocal8Bit("账户") + toThousandFigure(size+1),name);
-                mutexForConfigFile.unlock();
-                Blockchain::getInstance()->balanceMapInsert( name, "0.00000 " + QString(ASSET_NAME));
-                Blockchain::getInstance()->registerMapInsert( name, "NO");
-                Blockchain::getInstance()->addressMapInsert( name, Blockchain::getInstance()->getAddress(name));
-
-				CommonDialog commonDialog(CommonDialog::OkOnly);
-                commonDialog.setText( tr("Please backup the private key of this account!!!") );
-                commonDialog.pop();
-
-                ExportDialog exportDialog(name);
-                exportDialog.pop();
-			}
-        }
-        emit newAccount(name);
-    }
+	if (!name.isEmpty())
+	{
 
 
+		emit showShadowWidget();
+		Blockchain::getInstance()->postRPC(toJsonFormat("id_wallet_create_account+" + name, "create_account", QStringList() << name));
+	}
+	emit hideShadowWidget();
 }
 
 
@@ -367,10 +331,49 @@ void MainPage::jsonDataUpdated(QString id)
 //        ui->totalBalanceLabel->adjustSize();
 //        return;
 //    }
+	if (id.startsWith("id_wallet_create_account+"))
+	{
+		auto out=id.split("+");
+		if (out.size() == 2)
+		{
+			QString name = out[1];
+			QString result = Blockchain::getInstance()->jsonDataValue(id);
+			if (result.startsWith("\"result\":"))
+			{
+				mutexForAddressMap.lock();
+				int size = Blockchain::getInstance()->addressMap.size();
+				mutexForAddressMap.unlock();
+				mutexForConfigFile.lock();
+				Blockchain::getInstance()->configFile->setValue(QString("/accountInfo/") + QString::fromLocal8Bit("账户") + toThousandFigure(size + 1), name);
+				mutexForConfigFile.unlock();
+				Blockchain::getInstance()->balanceMapInsert(name, "0.00000 " + QString(ASSET_NAME));
+				Blockchain::getInstance()->registerMapInsert(name, "NO");
+				Blockchain::getInstance()->addressMapInsert(name, Blockchain::getInstance()->getAddress(name));
 
+				CommonDialog commonDialog(CommonDialog::OkOnly);
+				commonDialog.setText(tr("Please backup the private key of this account!!!"));
+				commonDialog.pop();
 
+				ExportDialog exportDialog(name);
+				exportDialog.pop();
+			}
+			else
+			{
+				qDebug() << "wallet_account_create " + name + '\n' << result;
+				CommonDialog commonDialog(CommonDialog::OkOnly);
+				commonDialog.setText(tr("Failed"));
+				commonDialog.pop();
+				return;
+			}
+			emit newAccount(name);
+		}
+
+		
+	}
 
 }
+
+
 
 void MainPage::updateTotalBalance()
 {

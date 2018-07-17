@@ -382,8 +382,8 @@ QToolButton:disabled{background-color:#cecece;}</string>
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>460</x>
-       <y>218</y>
+       <x>450</x>
+       <y>220</y>
        <width>251</width>
        <height>35</height>
       </rect>
