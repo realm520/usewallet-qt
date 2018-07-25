@@ -104,6 +104,13 @@ void AddContactDialog::on_addressLineEdit_textChanged(const QString &arg1)
         str = "WRONG";
     }
 
+	auto addr_str = ui->addressLineEdit->text();
+	if (addr_str.length() > 30 && addr_str.length() < 40 && ui->remarkLineEdit->text().length() > 0)
+	{
+		Blockchain::getInstance()->postRPC(toJsonFormat("id_validate_address+" + addr_str, "validate_address", QStringList() << addr_str));
+	}
+
+	ui->okBtn->setEnabled(false);
 //    RpcThread* rpcThread = new RpcThread;
 //    connect(rpcThread,SIGNAL(finished()),rpcThread,SLOT(deleteLater()));
 ////    rpcThread->setLogin("a","b");
@@ -116,6 +123,22 @@ void AddContactDialog::on_addressLineEdit_textChanged(const QString &arg1)
 
 void AddContactDialog::jsonDataUpdated(QString id)
 {
+	if (id.startsWith("id_validate_address+"))
+	{
+		auto ids=id.split('+');
+		auto result=Blockchain::getInstance()->jsonDataValue(id);
+		if (result.startsWith("\"result\":"))
+		{
+			int pos = result.indexOf("\"isvalid\":") + 10;
+			QString amount = result.mid(pos, result.indexOf("}", pos) - pos);
+			if (amount == "true"&&ids.size()==2&& ids[1]==ui->addressLineEdit->text())
+			{
+				ui->okBtn->setEnabled(true);
+				return;
+			}
+		}
+		ui->okBtn->setEnabled(false);
+	}
 //    if( id != "id_blockchain_get_account")  return;
 
 //    QString result = Fry::getInstance()->jsonDataValue( id);
@@ -192,6 +215,14 @@ void AddContactDialog::on_remarkLineEdit_textChanged(const QString &arg1)
         remark.remove(";");
         ui->remarkLineEdit->setText( remark);
     }
+    ui->remarkLineEdit->setText( remark);
+	auto addr_str = ui->addressLineEdit->text();
+	if (addr_str.length() > 30 && addr_str.length() < 40 && remark.length() > 0)
+	{
+		Blockchain::getInstance()->postRPC(toJsonFormat("id_validate_address+" + addr_str, "validate_address", QStringList() << addr_str));
+	}
+
+	ui->okBtn->setEnabled(false);
 }
 
 
