@@ -263,7 +263,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="trxTimeLabel">
+    <widget class="QLabel" name="trxExpirationLabel">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -339,7 +339,7 @@ QToolButton:disabled{background-color:#cecece;}</string>
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="trxExpirationLabel">
+    <widget class="QLabel" name="trxTimeLabel">
      <property name="geometry">
       <rect>
        <x>160</x>

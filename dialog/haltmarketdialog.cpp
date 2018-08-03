@@ -133,7 +133,7 @@ void HaltMarketDialog::init()
     }
 
     ui->symbolLabel->setText(info.symbol);
-    ui->balanceLabel->setText( QString::number( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(0) / 100000,'g',15 ) );
+    ui->balanceLabel->setText( AmountToQString( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(0) , 100000) );
 
     QString str;
     if( trueOrNot)
@@ -151,5 +151,5 @@ void HaltMarketDialog::init()
 
 void HaltMarketDialog::on_accountComboBox_currentIndexChanged(const QString &arg1)
 {
-    ui->balanceLabel->setText( QString::number( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(0) / 100000,'g',15 ) + " " + ASSET_NAME );
+    ui->balanceLabel->setText(AmountToQString( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(0) , 100000 ) + " " + ASSET_NAME );
 }

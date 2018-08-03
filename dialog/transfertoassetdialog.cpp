@@ -111,11 +111,11 @@ void TransferToAssetDialog::init()
     AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(id);
 
     ui->symbolLabel->setText(info.symbol);
-    ui->balanceLabel->setText( QString::number( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(id) / info.precision,'g',15 ) );
+    ui->balanceLabel->setText(AmountToQString( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(id) , info.precision) );
 }
 
 void TransferToAssetDialog::on_accountComboBox_currentIndexChanged(const QString &arg1)
 {
     AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(id);
-    ui->balanceLabel->setText( QString::number( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(id) / info.precision,'g',15 ) );
+    ui->balanceLabel->setText(AmountToQString( Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText()).value(id) , info.precision) );
 }

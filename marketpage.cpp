@@ -784,11 +784,11 @@ void MarketPage::showBalance()
     int quoteAssetId = Blockchain::getInstance()->getAssetId(getCurrentQuoteOrBaseAsset(true));
     int baseAssetId  = Blockchain::getInstance()->getAssetId(getCurrentQuoteOrBaseAsset(false));
     if( quoteAssetId < 0 || baseAssetId < 0 )    return;
-    double quoteBalance = assetBalanceMap.value(quoteAssetId);
-    double baseBalance  = assetBalanceMap.value(baseAssetId);
+    share_type quoteBalance = assetBalanceMap.value(quoteAssetId);
+	share_type baseBalance  = assetBalanceMap.value(baseAssetId);
 
-    ui->quoteBalanceLabel->setText( QString::number(quoteBalance / Blockchain::getInstance()->assetInfoMap.value(quoteAssetId).precision,'g',15) + " " + getCurrentQuoteOrBaseAsset(true) );
-    ui->baseBalanceLabel->setText( QString::number(baseBalance / Blockchain::getInstance()->assetInfoMap.value(baseAssetId).precision,'g',15) + " " + getCurrentQuoteOrBaseAsset(false) );
+    ui->quoteBalanceLabel->setText( AmountToQString(quoteBalance , Blockchain::getInstance()->assetInfoMap.value(quoteAssetId).precision) + " " + getCurrentQuoteOrBaseAsset(true) );
+    ui->baseBalanceLabel->setText(AmountToQString(baseBalance , Blockchain::getInstance()->assetInfoMap.value(baseAssetId).precision) + " " + getCurrentQuoteOrBaseAsset(false) );
 }
 
 void MarketPage::on_marketBtn_clicked()

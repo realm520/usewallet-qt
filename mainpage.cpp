@@ -181,7 +181,7 @@ void MainPage::updateAccountList()
 
 
         AssetBalanceMap map = Blockchain::getInstance()->accountBalanceMap.value(accountName);
-        ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(QString::number(map.value(assetIndex)/info.precision,'g',15)));
+        ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(AmountToQString(map.value(assetIndex),info.precision)));
 
 //        ui->accountTableWidget->setItem(rowNum,2,new QTableWidgetItem(Fry::getInstance()->balanceMapValue(accountName).remove(ASSET_NAME)));
         ui->accountTableWidget->item(rowNum,0)->setTextAlignment(Qt::AlignCenter);
@@ -392,9 +392,9 @@ void MainPage::updateTotalBalance()
 //    }
 //    ui->totalBalanceLabel->setText( "<body><font style=\"font-size:26px\" color=#ff0000>" + doubleTo2Decimals( totalBalance) + "</font><font style=\"font-size:12px\" color=#000000> " + QString(SHOW_NAME) +"</font></body>" );
 //    ui->totalBalanceLabel->adjustSize();
+	
 
-
-    double totalBalance = 0;
+    share_type totalBalance = 0;
     int assetIndex = ui->assetComboBox->currentIndex();
     AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(assetIndex);
     if( assetIndex < 0) assetIndex = 0;
@@ -403,8 +403,7 @@ void MainPage::updateTotalBalance()
         AssetBalanceMap map = Blockchain::getInstance()->accountBalanceMap.value(key);
         totalBalance += map.value(assetIndex);
     }
-    totalBalance = totalBalance / info.precision;
-    ui->totalBalanceLabel->setText( "<body><font style=\"font-size:18px\" color=#ff0000>" + QString::number(totalBalance,'g',15) + "</font><font style=\"font-size:12px\" color=#000000> " + info.symbol +"</font></body>" );
+    ui->totalBalanceLabel->setText( "<body><font style=\"font-size:18px\" color=#ff0000>" + AmountToQString(totalBalance, info.precision) + "</font><font style=\"font-size:12px\" color=#000000> " + info.symbol +"</font></body>" );
     ui->totalBalanceLabel->adjustSize();
     ui->scanBtn->move(ui->totalBalanceLabel->x() + ui->totalBalanceLabel->width() + 10,ui->totalBalanceLabel->y() + 7);
     ui->scanLabel->move(ui->totalBalanceLabel->x() + ui->totalBalanceLabel->width() + 10,ui->totalBalanceLabel->y() + 7);

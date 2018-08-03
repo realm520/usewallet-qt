@@ -30,7 +30,7 @@
 #include <QProcess>
 #include <QMutex>
 #include <QDialog>
-
+#include "share_type.h"
 #define ASSET_NAME "UL"
 #define WASSET_NAME L"UL"
 #define SHOW_NAME   "UL"
@@ -68,7 +68,7 @@ static QMutex mutexForBalanceMap;
 static QMutex mutexForAddressMap;
 static QMutex mutexForRpcReceiveOrNot;
 
-typedef QMap<int,double>  AssetBalanceMap;
+typedef QMap<int,share_type>  AssetBalanceMap;
 struct AssetInfo
 {
     int id;
@@ -78,16 +78,17 @@ struct AssetInfo
     QStringList owners;
     QString name;
     QString description;
-    double precision;
+    long precision;
     double maxSupply;
     double currentSupply;
     QString registrationDate;
     int activeFlags;
 };
+
 struct AssetAmount
 {
     int assetId;
-    double amount;
+	share_type amount;
 };
 struct Entry
 {
@@ -111,7 +112,7 @@ struct TransactionInfo
 //    int assetId;        //  交易金额的资产类型
 //    QString memo;
 //    AssetBalanceMap runningBalances;
-    double fee;
+    share_type fee;
     int    feeId;
     QString timeStamp;
     QString expirationTimeStamp;
@@ -287,6 +288,8 @@ private:
 QString doubleTo5Decimals(double number);
 QString getShowName(QString name);
 QString getAssetName(QString name);
+
+QString AmountToQString(share_type decimal, int precision);
 double roundDown(double decimal, int precision = 0);        // 根据精度 向下取"整"
 QString removeLastZeros(QString number);        // qstring::number() 对小数的处理有问题  使用std::to_string() 然后把后面的0去掉
 QString getBigNumberString(unsigned long long number,unsigned long long precision);

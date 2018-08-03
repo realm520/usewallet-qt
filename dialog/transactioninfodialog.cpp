@@ -31,7 +31,7 @@ TransactionInfoDialog::TransactionInfoDialog(TransactionInfo info, QWidget *pare
 
 
     ui->trxIdLabel->setText(info.trxId);
-    ui->feeLabel->setText(QString::number(info.fee / 100000,'f',5) + " " + ASSET_NAME);
+    ui->feeLabel->setText(AmountToQString(info.fee , 100000) + " " + ASSET_NAME);
     ui->blockHeightLabel->setText(QString::number(info.blockNum));
 
     if(info.isMarket)
@@ -87,7 +87,7 @@ TransactionInfoDialog::TransactionInfoDialog(TransactionInfo info, QWidget *pare
         ui->entriesTableWidget->setItem(i,1, new QTableWidgetItem(entry.toAccount));
 
         AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-        QString amountStr = QString::number(entry.amount.amount / assetInfo.precision,'g',15) + " " + assetInfo.symbol;
+        QString amountStr =  AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
         ui->entriesTableWidget->setItem(i,2, new QTableWidgetItem(amountStr));
 
         ui->entriesTableWidget->setItem(i,3, new QTableWidgetItem(entry.memo));

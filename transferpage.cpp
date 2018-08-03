@@ -16,7 +16,7 @@
 #include "commondialog.h"
 #include "transferconfirmdialog.h"
 #include "rpcthread.h"
-
+#include <string>
 
 TransferPage::TransferPage(QString name,QWidget *parent) :
     QWidget(parent),
@@ -232,7 +232,56 @@ void TransferPage::paintEvent(QPaintEvent *)
     painter.drawRect(-1,-1,858,68);
 
 }
+long long amount_from_string(std::string amount_string, int scaled_precision)
+{
 
+	int pre_chk = scaled_precision;
+	int i = 0;
+	while (pre_chk != 1)
+	{
+		if (pre_chk == 0)
+			return 0;
+		if (pre_chk % 10 != 0)
+			return 0;
+		pre_chk /= 10;
+		i++;
+	}
+	long long out = 0;
+	bool negative_found = false;
+	bool decimal_found = false;
+	for (const char c : amount_string)
+	{
+		if (c == '-' && !negative_found)
+		{
+			negative_found = true;
+			continue;
+		}
+		out *= 10;
+		if (isdigit(c))
+		{
+			out += c - '0';
+			if (decimal_found)
+			{
+				i--;
+				if (i == 0)
+					break;
+			}
+			continue;
+		}
+		if (c == '.' && !decimal_found)
+		{
+			decimal_found = true;
+			continue;
+		}
+		return 0;
+	}
+	while (i > 0)
+	{
+		out *= 10;
+		i--;
+	}
+	return out;
+}
 void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
 {
     AssetBalanceMap assetBalanceMap = Blockchain::getInstance()->accountBalanceMap.value(accountName);
@@ -240,19 +289,18 @@ void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
     if( assetId < 0)    return;
     AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(assetId);
     AssetInfo info2 = Blockchain::getInstance()->assetInfoMap.value(0);
-    double balance = assetBalanceMap.value(assetId) / info.precision;        // 当前资产余额
-    double balance2 = assetBalanceMap.value(0) / info2.precision;  // 主资产余额
-
-    double amount = ui->amountLineEdit->text().toDouble();
-    double fee = ui->feeLineEdit->text().toDouble();
+	share_type balance = assetBalanceMap.value(assetId);       // 当前资产余额
+	share_type balance2 = assetBalanceMap.value(0);  // 主资产余额
+    long long amount = amount_from_string(ui->amountLineEdit->text().toStdString(), info.precision);
+    long long fee = amount_from_string(ui->feeLineEdit->text().toStdString(), info2.precision);
 //    QString strBalanceTemp = Blockchain::getInstance()->balanceMapValue(accountName).remove(",");
 //    strBalanceTemp = strBalanceTemp.remove(" " + QString(ASSET_NAME));
 //    double dBalance = strBalanceTemp.remove(",").toDouble();
-    qDebug() <<  assetId <<  balance << balance2 << amount << fee;
+    qDebug() <<  assetId <<  balance.value << balance2.value << amount << fee;
     if(assetId == 0)
     {
         // 如果转的就是主资产
-        if( amount + fee > balance2)
+        if( amount + fee > balance2.value)
         {
             ui->tipLabel3->show();
             ui->tipLabel5->show();
@@ -270,7 +318,7 @@ void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
     }
     else
     {
-        if( fee > balance2)
+        if( fee > balance2.value)
         {
             ui->tipLabel3->show();
             ui->tipLabel5->show();
@@ -280,7 +328,7 @@ void TransferPage::on_amountLineEdit_textChanged(const QString &arg1)
             return;
         }
 
-        if( amount > balance)
+        if( amount > balance.value)
         {
             ui->tipLabel3->show();
             ui->tipLabel5->show();
@@ -430,7 +478,7 @@ void TransferPage::getBalance()
     if( assetIndex < 0) assetIndex = 0;
 
     AssetBalanceMap map = Blockchain::getInstance()->accountBalanceMap.value(ui->accountComboBox->currentText());
-    double balance;
+    share_type balance;
     if( map.contains(assetIndex))
     {
         balance = map.value(assetIndex);
@@ -439,9 +487,8 @@ void TransferPage::getBalance()
     {
         balance = 0;
     }
-    balance = balance / info.precision;
 
-    ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>" + QString::number(balance,'g',15) + "</font><font style=\"font-size:12px\" color=#000000> " + info.symbol + "</font></body>" );
+    ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>" + AmountToQString(balance,info.precision) + "</font><font style=\"font-size:12px\" color=#000000> " + info.symbol + "</font></body>" );
     ui->balanceLabel->adjustSize();
     ui->balanceLabel->move( 783 - ui->balanceLabel->width(),33);
     ui->balanceLabel2->move( 710 - ui->balanceLabel->width(),33);

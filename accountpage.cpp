@@ -267,9 +267,9 @@ void AccountPage::jsonDataUpdated(QString id)
         AssetBalanceMap assetBalanceMap = Blockchain::getInstance()->accountBalanceMap.value(accountName);
         int assetId = Blockchain::getInstance()->getAssetId(ui->assetComboBox->currentText());
         if( assetId < 0)    return;
-        double amount = assetBalanceMap.value(assetId);
+        share_type amount = assetBalanceMap.value(assetId);
         AssetInfo info = Blockchain::getInstance()->assetInfoMap.value(assetId);
-        ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>" + QString::number(amount / info.precision,'g',15) + "</font><font style=\"font-size:12px\" color=#000000> " + ui->assetComboBox->currentText() + "</font></body>" );
+        ui->balanceLabel->setText( "<body><font style=\"font-size:18px\" color=#000000>" + AmountToQString(amount , info.precision) + "</font><font style=\"font-size:12px\" color=#000000> " + ui->assetComboBox->currentText() + "</font></body>" );
         ui->balanceLabel->adjustSize();
 
         return;

@@ -438,7 +438,7 @@ void Blockchain::parseBalance()
                             QJsonValue value = array.at(0);
                             QString account = value.toString();
                             AssetBalanceMap assetBalanceMap;
-
+							qDebug() << array;
                             QJsonArray array2 = array.at(1).toArray();
 
                             for( int i = 0; i < array2.size(); i++)
@@ -446,14 +446,14 @@ void Blockchain::parseBalance()
                                 QJsonArray array3 = array2.at(i).toArray();
                                 int asset = array3.at(0).toInt();
 
-                                double balance;
+                                share_type balance;
                                 if( array3.at(1).isString())
                                 {
-                                    balance = array3.at(1).toString().toDouble();
+                                    balance = array3.at(1).toString().toULongLong();
                                 }
                                 else
                                 {
-                                    balance = array3.at(1).toDouble();
+									balance = array3.at(1).toInt();
                                 }
 
                                 assetBalanceMap.insert(asset, balance);
@@ -521,11 +521,11 @@ void Blockchain::parseAssetInfo()
                         QJsonValue value = object.take("precision");
                         if( value.isString())
                         {
-                            assetInfo.precision = value.toString().toDouble();
+                            assetInfo.precision = value.toString().toUInt();
                         }
                         else
                         {
-                            assetInfo.precision = value.toDouble();
+                            assetInfo.precision = value.toInt();
                         }
 
                         QJsonValue value2 = object.take("max_supply");
@@ -632,11 +632,11 @@ void Blockchain::parseTransactions(QString result, QString _key)
                             QJsonValue amountValue   = amountObject.take("amount");
                             if( amountValue.isString())
                             {
-                                entry.amount.amount  = amountValue.toString().toDouble();
+                                entry.amount.amount  = amountValue.toString().toULongLong();
                             }
                             else
                             {
-                                entry.amount.amount  = amountValue.toDouble();
+                                entry.amount.amount  = amountValue.toInt();
                             }
 
                             QJsonArray runningBalanceArray  = entryObject.take("running_balances").toArray().at(0).toArray().at(1).toArray();
@@ -648,11 +648,11 @@ void Blockchain::parseTransactions(QString result, QString _key)
                                 QJsonValue amountValue2   = amountObject2.take("amount");
                                 if( amountValue2.isString())
                                 {
-                                    assetAmount.amount  = amountValue2.toString().toDouble();
+                                    assetAmount.amount  = amountValue2.toString().toULongLong();
                                 }
                                 else
                                 {
-                                    assetAmount.amount  = amountValue2.toDouble();
+                                    assetAmount.amount  = amountValue2.toInt();
                                 }
                                 entry.runningBalances.append(assetAmount);
                             }
@@ -664,11 +664,11 @@ void Blockchain::parseTransactions(QString result, QString _key)
                         QJsonValue amountValue3     = object5.take("amount");
                         if( amountValue3.isString())
                         {
-                            transactionInfo.fee     = amountValue3.toString().toDouble();
+                            transactionInfo.fee     = amountValue3.toString().toULongLong();
                         }
                         else
                         {
-                            transactionInfo.fee     = amountValue3.toDouble();
+                            transactionInfo.fee     = amountValue3.toInt();
                         }
                         transactionInfo.feeId       = object5.take("asset_id").toInt();
 
@@ -1155,27 +1155,58 @@ QString getAssetName(QString name)
     if( name == SHOW_NAME)     return ASSET_NAME;
     return name;
 }
-QString DoubleToQString(double decimal,int precision =10)
+QString AmountToQString(share_type decimal,int precision)
 {
-	QString str=QString::number(decimal, 'f', precision);
-	auto rit=str.rbegin();
+	if (decimal.value == 0)
+		return "0";
+	int pre_chk = precision;
 	int i = 0;
-	while (rit != str.rend())
+	while (pre_chk != 1)
 	{
-		if (*rit != '0')
-		{
-			if (*rit == '.')
-			{
-				i++;
-				break;
-			}
-			break;
-		}
-		rit++;
+		if (pre_chk == 0)
+			return "0";
+		if (pre_chk % 10 != 0)
+			return "0";
+		pre_chk /= 10;
 		i++;
 	}
-	str.chop(i);
-	return str;
+	QList<char> tmp;
+	bool point_added = false;
+	bool got_first_not_zero = false;
+	while (decimal.value != 0)
+	{
+		if (i == 0)
+		{
+			point_added = true;
+			if (got_first_not_zero)
+				tmp.push_front('.');
+			i--;
+			got_first_not_zero = true;
+			continue;
+		}
+		char tc = decimal.value % 10 + '0';
+		if (got_first_not_zero || tc != '0')
+		{
+			tmp.push_front(tc);
+			got_first_not_zero = true;
+		}
+		i--;
+		decimal.value /= 10;
+	}
+	while (i > 0)
+	{
+		tmp.push_front('0');
+		i--;
+	}
+	QString out;
+	if (!point_added)
+	{
+		tmp.push_front('.');
+		tmp.push_front('0');
+	}
+	for (auto it : tmp)
+		out.push_back(it);
+	return out;
 }
 double roundDown(double decimal, int precision)
 {
@@ -1299,7 +1330,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
                 result.isAssetRelated = false;
             }
 
-            QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+            QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
             result.amountVector.append(amountStr);
         }
 
@@ -1312,7 +1343,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
             Entry entry = myEntries.at(0);
             AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-            QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+            QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
             result.amountVector.append(amountStr);
         }
         else
@@ -1327,11 +1358,11 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
                     QString amountStr;
                     if(entry.toAccount == accountName || entry.amount.amount == 0)
                     {
-                        amountStr = DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                        amountStr = AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                     }
                     else
                     {
-                        amountStr = "-" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                        amountStr = "-" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                     }
                     result.amountVector.append(amountStr);
                     continue;
@@ -1340,7 +1371,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
                 if(entry.toAccount == accountName)
                 {
                     AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-                    QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                    QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                     result.amountVector.append(amountStr);
                 }
             }
@@ -1351,7 +1382,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("update permissions");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
     }
@@ -1360,7 +1391,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("create asset");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
     }
         break;
@@ -1368,7 +1399,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("airdrop");
 
-        double inAmount = 0;
+        share_type inAmount = 0;
         int assetId = -1;
         foreach (Entry entry, myEntries)
         {
@@ -1384,7 +1415,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
         if(info.fee > 0)         // 如果是空投发起者  显示手续费
         {
-            QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+            QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
             result.amountVector.append(amountStr);
         }
         else if(_assetName == ASSET_NAME)
@@ -1395,7 +1426,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
         if(assetId > 0)
         {
-            QString amountStr = "+" + DoubleToQString(inAmount / assetInfo.precision) + " " + assetInfo.symbol;
+            QString amountStr = "+" + AmountToQString(inAmount , assetInfo.precision) + " " + assetInfo.symbol;
             result.amountVector.append(amountStr);
         }
     }
@@ -1404,8 +1435,8 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("transfer to asset");
 
-        double inAmount = 0;
-        double outAmount = 0;
+        share_type inAmount = 0;
+        share_type outAmount = 0;
         int assetId = -1;
         foreach (Entry entry, myEntries)
         {
@@ -1428,10 +1459,10 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
         if(info.fee > 0)         // 如果是分红发起者  显示手续费
         {
-            QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+            QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
             result.amountVector.append(amountStr);
 
-            amountStr = "-" + DoubleToQString(outAmount / assetInfo.precision) + " " + assetInfo.symbol;
+            amountStr = "-" + AmountToQString(outAmount , assetInfo.precision) + " " + assetInfo.symbol;
             result.amountVector.append(amountStr);
         }
         else if(_assetName == ASSET_NAME)
@@ -1442,7 +1473,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 
         if(assetId > 0)
         {
-            QString amountStr = "+" + DoubleToQString(inAmount / assetInfo.precision) + " " + assetInfo.symbol;
+            QString amountStr = "+" + AmountToQString(inAmount , assetInfo.precision) + " " + assetInfo.symbol;
             result.amountVector.append(amountStr);
         }
 
@@ -1458,29 +1489,29 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
             {
                 result.type = QObject::tr("transfer to self");
 
-                QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+                QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
                 result.amountVector.append(amountStr);
 
-                amountStr = DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                amountStr = AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
             else if( entry.fromAccount == accountName)
             {
                 result.type = QObject::tr("transfer-out");
 
-                QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+                QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
                 result.amountVector.append(amountStr);
-                double transfer_amou=entry.amount.amount;
+                share_type transfer_amou=entry.amount.amount;
                 if(assetInfo.symbol==ASSET_NAME)
                     transfer_amou-=info.fee;
 
-                amountStr = "-" + DoubleToQString(transfer_amou / assetInfo.precision) + " " + assetInfo.symbol;
+                amountStr = "-" + AmountToQString(transfer_amou , assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
             else
             {
                 result.type = QObject::tr("transfer-in");
-                QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
 
                 if( assetInfo.symbol != ASSET_NAME && _assetName == ASSET_NAME)
@@ -1495,7 +1526,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("register account");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
     }
         break;
@@ -1507,7 +1538,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
             Entry entry = myEntries.at(0);
             if(entry.fromAccount == accountName)
             {
-                QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+                QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
                 result.amountVector.append(amountStr);
             }
             else if(_assetName == ASSET_NAME)
@@ -1519,7 +1550,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
             AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
             if(entry.toAccount == accountName)
             {
-                QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
             else if(_assetName != ASSET_NAME)
@@ -1534,7 +1565,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
 			{
 				if (_assetName == ASSET_NAME)
 				{
-					QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+					QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
 					result.amountVector.append(amountStr);
 				}
 			}
@@ -1544,7 +1575,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
             AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
             if(entry.toAccount == accountName)
             {
-                QString amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+                QString amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
                 result.amountVector.append(amountStr);
             }
 			if(result.amountVector.size()==0)
@@ -1557,12 +1588,12 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("market withdraw");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
         Entry entry = myEntries.at(0);
         AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-        amountStr = "+" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+        amountStr = "+" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
         result.amountVector.append(amountStr);
     }
         break;
@@ -1570,12 +1601,12 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("market bid");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
         Entry entry = myEntries.at(0);
         AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-        amountStr = "-" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+        amountStr = "-" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
         result.amountVector.append(amountStr);
     }
         break;
@@ -1583,12 +1614,12 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("market ask");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
         Entry entry = myEntries.at(0);
         AssetInfo assetInfo = Blockchain::getInstance()->assetInfoMap.value(entry.amount.assetId);
-        amountStr = "-" + DoubleToQString(entry.amount.amount / assetInfo.precision) + " " + assetInfo.symbol;
+        amountStr = "-" + AmountToQString(entry.amount.amount , assetInfo.precision) + " " + assetInfo.symbol;
         result.amountVector.append(amountStr);
     }
         break;
@@ -1596,7 +1627,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("edit admins");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
     }
@@ -1605,7 +1636,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("halt market");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
     }
@@ -1614,7 +1645,7 @@ TransactionDetail getDetail(TransactionInfo info, QString accountName, QString _
     {
         result.type = QObject::tr("recover market");
 
-        QString amountStr = "-" + DoubleToQString(info.fee / 100000) + " " + ASSET_NAME;
+        QString amountStr = "-" + AmountToQString(info.fee , 100000) + " " + ASSET_NAME;
         result.amountVector.append(amountStr);
 
     }
